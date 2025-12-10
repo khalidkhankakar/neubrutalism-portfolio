@@ -1,8 +1,25 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color Palette */
+  --neo-yellow: #FFD60A;
+  --neo-blue: #4CC9F0;
+  --neo-pink: #F72585;
+  --neo-purple: #7209B7;
+  --neo-mint: #4ECDC4;
+  --neo-cream: #FFFDF5;
+  --neo-black: #121212;
+  --neo-dark-gray: #1E1E1E;
+
+  /* Theme Defaults */
+  --shadow-color: var(--neo-black);
+}
+
+.dark {
+  --shadow-color: var(--neo-cream);
 }
 
 @theme inline {
@@ -10,6 +27,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --background: var(--neo-cream);
+  --foreground: var(--neo-black);
+
+  --color-neo-yellow: var(--neo-yellow);
+  --color-neo-blue: var(--neo-blue);
+  --color-neo-pink: var(--neo-pink);
+  --color-neo-purple: var(--neo-purple);
+  --color-neo-mint: var(--neo-mint);
+  --color-neo-cream: var(--neo-cream);
+  --color-neo-black: var(--neo-black);
+  --color-neo-dark-gray: var(--neo-dark-gray);
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +49,76 @@
   }
 }
 
+.dark body {
+  background-color: var(--neo-black);
+  color: var(--neo-cream);
+}
+
+body,
+div,
+nav,
+a,
+button,
+span,
+p,
+h1,
+h2,
+h3,
+section,
+footer {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--neo-cream);
+  color: var(--neo-black);
+  overflow-x: hidden;
+  margin: 0;
+}
+
+
+/* Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neo-cream);
+  border-left: 3px solid var(--neo-black);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--neo-black);
+  border-left: 3px solid var(--neo-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neo-pink);
+  border: 3px solid var(--neo-black);
+  transition: border-color 0.4s ease;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  border: 3px solid var(--neo-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neo-purple);
 }
