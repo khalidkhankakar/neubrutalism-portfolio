@@ -31,6 +31,8 @@
   --background: var(--neo-cream);
   --foreground: var(--neo-black);
 
+  
+
   --color-neo-yellow: var(--neo-yellow);
   --color-neo-blue: var(--neo-blue);
   --color-neo-pink: var(--neo-pink);
@@ -40,12 +42,34 @@
   --color-neo-black: var(--neo-black);
   --color-neo-dark-gray: var(--neo-dark-gray);
 
+
+  --shadow-neo: 5px 5px 0px 0px var(--shadow-color);
+  --shadow-neo-lg: 10px 10px 0px 0px var(--shadow-color);
+  --shadow-neo-xl: 15px 15px 0px 0px var(--shadow-color);
+  --shadow-neo-sm: 3px 3px 0px 0px var(--shadow-color);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-bounce-slow: bounce 3s infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+  }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
   }
 }
 

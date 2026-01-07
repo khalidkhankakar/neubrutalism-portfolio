@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0.5 }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="absolute top-20 left-10 w-16 h-16 bg-neo-yellow border-[3px] border-neo-black dark:border-neo-cream rounded-full shadow-neo animate-float -z-0"
+                className="absolute top-20 left-10 w-16 h-16 bg-neo-yellow border-[3px] border-neo-black dark:border-neo-cream rounded-full shadow-neo animate-float z-0"
             ></motion.div>
             <motion.div
                 initial={{ scale: 0, opacity: 0 }}
