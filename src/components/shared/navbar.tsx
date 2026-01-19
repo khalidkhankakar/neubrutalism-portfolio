@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
                     <a
                         href="#"
                         onClick={(e) => handleScroll(e, '#hero')}
-                        className="inline-block bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream px-4 py-2 font-display text-2xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300 text-neo-black dark:text-neo-cream"
+                        className="inline-block bg-white dark:bg-neo-black border-2 border-neo-black dark:border-neo-cream px-3 py-1 font-display text-lg md:xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300 text-neo-black dark:text-neo-cream"
                     >
                         DEV<span className="text-neo-pink">.</span>IO
                     </a>
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
                             key={link.name}
                             href={link.href}
                             onClick={(e) => handleScroll(e, link.href)}
-                            className="bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream px-4 py-2 font-bold shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all duration-300 text-neo-black dark:text-neo-cream"
+                            className="bg-white dark:bg-neo-black border-2 border-neo-black dark:border-neo-cream px-3 py-1 font-semibold shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all duration-300 text-neo-black dark:text-neo-cream"
                         >
                             {link.name}
                         </a>
@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
 
                     <button
                         onClick={toggleTheme}
-                        className="bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream p-2 shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all duration-300 text-neo-black dark:text-neo-cream group"
+                        className="bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream p-1 shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all duration-300 text-neo-black dark:text-neo-cream group"
                         aria-label="Toggle Theme"
                     >
                         <div className="relative w-6 h-6">

@@ -58,19 +58,19 @@ export const Projects: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {projects.map((project, idx) => (
             <ScrollReveal key={project.id} delay={idx * 0.15} width="100%">
-              <div className="group perspective-1000 h-full">
-                <div className="relative transform transition-all duration-300 preserve-3d group-hover:rotate-x-2 group-hover:-translate-y-4 h-full">
+              <div className="group  h-full">
+                <div className="relative  h-full">
                   
                   {/* 3D Depth Layer */}
                   <div className={`absolute inset-0 ${project.color} border-[3px] border-neo-black dark:border-neo-cream translate-x-4 translate-y-4 rounded-xl -z-10`}></div>
                   
                   <BrutalistCard className="h-full flex flex-col p-0 overflow-hidden rounded-xl bg-white dark:bg-neo-dark-gray border-neo-black dark:border-neo-cream">
                     {/* Image Header */}
-                    <div className="relative h-48 overflow-hidden border-b-[3px] border-neo-black dark:border-neo-cream group-hover:h-56 transition-all duration-300">
+                    <div className="relative h-48 overflow-hidden border-b-[3px] border-neo-black dark:border-neo-cream  transition-all duration-300">
                       <img 
                         src={project.imageUrl} 
                         alt={project.title} 
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 "
                       />
                       <div className="absolute top-2 right-2 flex gap-2">
                         <div className="bg-white border-2 border-neo-black p-1 shadow-sm text-neo-black">

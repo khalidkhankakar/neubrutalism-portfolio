@@ -37,7 +37,7 @@ export const BrutalistButton: React.FC<BrutalistButtonProps> = ({
     className = '',
     ...props
 }) => {
-    const baseStyle = "px-6 py-3 font-bold border-[3px] border-neo-black dark:border-neo-cream text-lg transition-all duration-200 ease-out active:translate-y-1 active:shadow-none flex items-center justify-center gap-2";
+    const baseStyle = "px-3 py-2 font-bold border-2 border-neo-black dark:border-neo-cream md:text-lg text-sm transition-all duration-200 ease-out active:translate-y-1 active:shadow-none flex items-center justify-center gap-2";
 
     const variants = {
         primary: "bg-neo-pink text-white shadow-neo hover:-translate-y-1 hover:translate-x-1 hover:shadow-neo-lg",

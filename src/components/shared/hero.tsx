@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0.5 }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="absolute top-20 left-10 w-16 h-16 bg-neo-yellow border-[3px] border-neo-black dark:border-neo-cream rounded-full shadow-neo animate-float z-0"
+                className="absolute top-30 left-10 w-12 h-12 bg-neo-yellow border-2 border-neo-black dark:border-neo-cream rounded-full shadow-neo animate-float z-0"
             ></motion.div>
             <motion.div
                 initial={{ scale: 0, opacity: 0 }}
@@ -37,15 +37,15 @@ export const Hero: React.FC = () => {
                 className="absolute bottom-40 right-10 w-24 h-24 bg-neo-purple border-[3px] border-neo-black dark:border-neo-cream transform rotate-12 shadow-neo animate-float-delayed -z-0"
             ></motion.div>
 
-            <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10" ref={containerRef}>
+            <div className=" mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12  items-center relative z-10" ref={containerRef}>
 
                 {/* Left Content */}
-                <div className="space-y-8">
+                <div className="space-y-8 ">
                     <motion.div
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="inline-block bg-neo-mint border-[3px] border-neo-black dark:border-neo-cream px-4 py-1 font-bold shadow-neo-sm transform -rotate-2 text-neo-black"
+                        className="inline-block bg-neo-mint border border-neo-black dark:border-neo-cream px-4 py-1 font-semibold shadow-neo-sm transform -rotate-2 text-neo-black"
                     >
                         FULL STACK DEVELOPER
                     </motion.div>
@@ -54,7 +54,7 @@ export const Hero: React.FC = () => {
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-6xl md:text-8xl font-display font-black leading-tight text-neo-black dark:text-neo-cream drop-shadow-sm"
+                        className="text-4xl md:text-6xl  font-display font-black leading-tight text-neo-black dark:text-neo-cream drop-shadow-sm"
                     >
                         I BUILD <br />
                         <span className="text-neo-pink relative inline-block">
@@ -104,8 +104,8 @@ export const Hero: React.FC = () => {
                         className="flex gap-4 pt-8"
                     >
                         {[Github, Twitter, Linkedin].map((Icon, idx) => (
-                            <a key={idx} href="#" className="p-3 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all text-neo-black dark:text-neo-cream">
-                                <Icon size={24} />
+                            <a key={idx} href="#" className="p-2 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all text-neo-black dark:text-neo-cream">
+                                <Icon size={20} />
                             </a>
                         ))}
                     </motion.div>
@@ -116,13 +116,13 @@ export const Hero: React.FC = () => {
                     initial={{ scale: 0.8, opacity: 0, rotateY: 90 }}
                     animate={{ scale: 1, opacity: 1, rotateY: 0 }}
                     transition={{ duration: 1, delay: 0.2, type: "spring" }}
-                    className="relative h-[500px] w-full flex items-center justify-center perspective-1000"
+                    className="relative w-full  flex items-center justify-center "
                 >
                     {/* Interactive 3D Container */}
                     <div
                         className="relative w-full max-w-md aspect-square transition-transform duration-100 ease-out"
                         style={{
-                            transform: `rotateY(${mousePos.x * 20}deg) rotateX(${-mousePos.y * 20}deg)`,
+                            
                             transformStyle: 'preserve-3d'
                         }}
                     >
@@ -132,20 +132,20 @@ export const Hero: React.FC = () => {
                         ></div>
 
                         {/* Middle Decorative Elements */}
-                        <div className="absolute -top-10 -right-10 w-24 h-24 bg-neo-yellow border-[3px] border-black dark:border-neo-cream rounded-full shadow-neo flex items-center justify-center transform translate-z-[20px] animate-bounce-slow">
-                            <span className="text-4xl font-black text-neo-black">JS</span>
+                        <div className="absolute -top-10 -right-10 w-20 h-20 bg-neo-yellow border-2 border-black  dark:border-neo-cream rounded-full shadow-neo flex items-center justify-center transform translate-z-5 animate-bounce-slow">
+                            <span className="text-4xl font-semibold text-neo-black">JS</span>
                         </div>
 
-                        <div className="absolute -bottom-5 -left-5 w-32 h-16 bg-neo-blue border-[3px] border-black dark:border-neo-cream shadow-neo flex items-center justify-center transform translate-z-[40px] -rotate-6">
+                        <div className="absolute -bottom-10 -left-5 w-32 h-16 bg-neo-blue border-[3px] border-black dark:border-neo-cream shadow-neo flex items-center justify-center transform translate-z-10 -rotate-6">
                             <span className="text-xl font-black text-white">REACT</span>
                         </div>
 
                         {/* Main Card (Avatar) */}
                         <div
-                            className="absolute inset-0 bg-white dark:bg-neo-dark-gray border-[4px] border-neo-black dark:border-neo-cream rounded-2xl shadow-[10px_10px_0px_0px_var(--shadow-color)] overflow-hidden flex flex-col transform translate-z-[0px]"
+                            className="absolute inset-0 bg-white dark:bg-neo-dark-gray border-4 border-neo-black dark:border-neo-cream rounded-2xl shadow-[10px_10px_0px_0px_var(--shadow-color)] overflow-hidden flex flex-col transform translate-z-0"
                         >
                             {/* Browser Header */}
-                            <div className="bg-neo-black h-12 flex items-center px-4 gap-2 border-b-[4px] border-neo-black dark:border-neo-cream">
+                            <div className="bg-neo-black h-12 flex items-center px-4 gap-2 border-b-4 border-neo-black dark:border-neo-cream">
                                 <div className="w-4 h-4 rounded-full bg-neo-pink border border-white"></div>
                                 <div className="w-4 h-4 rounded-full bg-neo-yellow border border-white"></div>
                                 <div className="w-4 h-4 rounded-full bg-neo-mint border border-white"></div>
@@ -155,9 +155,9 @@ export const Hero: React.FC = () => {
                             {/* Image / Content */}
                             <div className="flex-1 bg-neo-purple relative overflow-hidden group">
                                 <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/designer/800/800')] bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-neo-black/80 to-transparent flex flex-col justify-end p-6">
-                                    <span className="text-white font-black text-3xl">ALEX DEV</span>
-                                    <span className="text-neo-yellow font-bold">CREATIVE ENGINEER</span>
+                                <div className="absolute inset-0 bg-linear-to-t from-neo-black/80 to-transparent flex flex-col justify-end p-6">
+                                    <span className="text-white font-black text-3xl">Khalid Kakar</span>
+                                    <span className="text-neo-yellow font-bold">AI ENGINEER</span>
                                 </div>
 
                                 {/* Sticker */}
