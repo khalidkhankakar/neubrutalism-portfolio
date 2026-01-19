@@ -13,8 +13,8 @@ export const Navbar: React.FC = () => {
         { name: 'About', href: '#about' },
         { name: 'Projects', href: '#projects' },
         { name: 'Gallery', href: '#gallery' },
-        { name: 'Articles', href: '#articles' },
         { name: 'Skills', href: '#skills' },
+        { name: 'Articles', href: '#articles' },
         { name: 'Contact', href: '#contact' },
     ];
 
@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
 
                 {/* Desktop Menu - Hidden on Tablet (md) and Mobile, Visible on Large (lg) */}
                 <div className="hidden lg:flex gap-4 pointer-events-auto items-center">
-                    {navLinks.map((link) => (
+                    {navLinks.splice(4,6).map((link) => (
                         <a
                             key={link.name}
                             href={link.href}

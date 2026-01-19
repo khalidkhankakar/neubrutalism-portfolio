@@ -39,18 +39,16 @@ export const Articles: React.FC = () => {
       
       <div className="max-w-5xl mx-auto relative z-10">
         <ScrollReveal width="100%">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col  justify-between mb-16 gap-6">
             <div>
               <span className="inline-block bg-neo-mint border-[3px] border-neo-black dark:border-neo-cream px-4 py-1 font-bold shadow-neo mb-4 transform -rotate-1 text-neo-black">
                 READ MY MIND
               </span>
-              <h2 className="text-5xl md:text-7xl font-display font-black text-white dark:text-black drop-shadow-[5px_5px_0px_var(--shadow-color)]">
+              <h2 className="text-3xl md:text-5xl font-display font-black text-white dark:text-black drop-shadow-[3px_3px_0px_var(--shadow-color)]">
                 LATEST <br/> THOUGHTS
               </h2>
             </div>
-            <BrutalistButton variant="secondary" className="hidden md:flex">
-              VIEW ALL POSTS
-            </BrutalistButton>
+            
           </div>
         </ScrollReveal>
 
@@ -59,14 +57,14 @@ export const Articles: React.FC = () => {
             <ScrollReveal key={article.id} width="100%" delay={index * 0.1} direction="left">
               <div className="group relative">
                 {/* Background Shadow Block */}
-                <div className={`absolute inset-0 ${article.color} border-[3px] border-black dark:border-neo-cream translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10 transition-transform group-hover:translate-x-6 group-hover:translate-y-6`}></div>
+                <div className={`absolute inset-0 ${article.color}   dark:border-neo-cream translate-x-1 translate-y-1 md:translate-x-3 md:translate-y-3 -z-10 transition-transform group-hover:translate-x-4 group-hover:translate-y-4`}></div>
                 
                 <BrutalistCard className="bg-white dark:bg-neo-black hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col md:flex-row gap-6 md:items-center">
                     
                     {/* Date Block */}
                     <div className="shrink-0 flex md:flex-col items-center justify-center bg-neo-black dark:bg-neo-cream text-white dark:text-neo-black p-4 w-full md:w-24 border-2 border-black dark:border-neo-cream gap-2 md:gap-0">
-                      <span className="text-sm font-bold opacity-80">{article.date.split(' ')[0]}</span>
+                      <span className="text-3xl md:text-sm font-bold opacity-80">{article.date.split(' ')[0]}</span>
                       <span className="text-3xl font-black">{article.date.split(' ')[1]}</span>
                     </div>
 
@@ -79,17 +77,17 @@ export const Articles: React.FC = () => {
                            </span>
                          ))}
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-black font-display mb-2 group-hover:text-neo-purple transition-colors text-neo-black dark:text-neo-cream">
+                      <h3 className="text-lg md:text-xl font-black font-display mb-2 group-hover:text-neo-purple transition-colors text-neo-black dark:text-neo-cream">
                         {article.title}
                       </h3>
-                      <p className="text-gray-700 dark:text-gray-300 font-bold leading-relaxed">
+                      <p className="text-gray-700 text-sm dark:text-gray-300 font-semibold leading-relaxed">
                         {article.snippet}
                       </p>
                     </div>
 
                     {/* Action */}
                     <div className="shrink-0">
-                      <button className="w-12 h-12 bg-neo-yellow border-[3px] border-black dark:border-neo-cream flex items-center justify-center shadow-neo group-hover:shadow-neo-lg group-hover:bg-neo-pink group-hover:text-white transition-all text-neo-black">
+                      <button className="w-full md:w-12 h-12 bg-neo-yellow border-[3px] border-black dark:border-neo-cream flex items-center justify-center shadow-neo group-hover:shadow-neo-lg group-hover:bg-neo-pink group-hover:text-white transition-all text-neo-black">
                         <ArrowUpRight size={24} strokeWidth={3} />
                       </button>
                     </div>
@@ -101,7 +99,7 @@ export const Articles: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-12 md:hidden">
+        <div className="mt-12 ">
             <BrutalistButton variant="secondary" className="w-full">
               VIEW ALL POSTS
             </BrutalistButton>

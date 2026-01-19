@@ -127,22 +127,20 @@ export const Hero: React.FC = () => {
                         }}
                     >
                         {/* Back Card */}
-                        <div
-                            className="absolute inset-0 bg-neo-black dark:bg-white border-[4px] border-black dark:border-white rounded-3xl transform translate-z-[-40px] translate-x-8 translate-y-8"
-                        ></div>
+                        
 
                         {/* Middle Decorative Elements */}
-                        <div className="absolute -top-10 -right-10 w-20 h-20 bg-neo-yellow border-2 border-black  dark:border-neo-cream rounded-full shadow-neo flex items-center justify-center transform translate-z-5 animate-bounce-slow">
-                            <span className="text-4xl font-semibold text-neo-black">JS</span>
+                        <div className="absolute -top-3 md:-top-10 right-3 md:-right-10 size-12 md:size-20 bg-neo-yellow border-2 border-black  dark:border-neo-cream rounded-full shadow-neo flex items-center justify-center transform translate-z-5 animate-bounce-slow">
+                            <span className="text-xl md:text-3xl font-semibold text-neo-black">JS</span>
                         </div>
 
-                        <div className="absolute -bottom-10 -left-5 w-32 h-16 bg-neo-blue border-[3px] border-black dark:border-neo-cream shadow-neo flex items-center justify-center transform translate-z-10 -rotate-6">
-                            <span className="text-xl font-black text-white">REACT</span>
+                        <div className="absolute -bottom-3 left-10  bg-neo-blue border border-black dark:border-neo-cream  flex items-center justify-center transform translate-z-10 -rotate-6">
+                            <span className="text-sm md:text-lg font-black py-1 px-2 text-white">REACT</span>
                         </div>
 
                         {/* Main Card (Avatar) */}
                         <div
-                            className="absolute inset-0 bg-white dark:bg-neo-dark-gray border-4 border-neo-black dark:border-neo-cream rounded-2xl shadow-[10px_10px_0px_0px_var(--shadow-color)] overflow-hidden flex flex-col transform translate-z-0"
+                            className="absolute inset-0 bg-white dark:bg-neo-dark-gray border-4 border-neo-black dark:border-neo-cream rounded-lg shadow-neo-lg  overflow-hidden flex flex-col transform translate-z-0"
                         >
                             {/* Browser Header */}
                             <div className="bg-neo-black h-12 flex items-center px-4 gap-2 border-b-4 border-neo-black dark:border-neo-cream">
@@ -161,7 +159,7 @@ export const Hero: React.FC = () => {
                                 </div>
 
                                 {/* Sticker */}
-                                <div className="absolute top-4 right-4 bg-white border-[3px] border-black px-3 py-1 rotate-12 shadow-neo text-sm font-bold text-neo-black">
+                                <div className="absolute top-4 right-4 bg-white border-[3px] border-black px-3 py-1 rotate-12 shadow-neo text-xs md:text-sm  text-neo-black">
                                     OPEN FOR WORK
                                 </div>
                             </div>
@@ -184,7 +182,7 @@ if (client.needsCool) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+                className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
             >
                 <ArrowDown size={40} className="text-neo-black dark:text-neo-cream" />
             </motion.div>

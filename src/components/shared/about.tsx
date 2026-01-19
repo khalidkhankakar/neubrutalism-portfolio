@@ -21,7 +21,7 @@ export const About: React.FC = () => {
                <div className="relative ">
                  <BrutalistCard color="bg-neo-yellow" className="transform  rotate-1  z-10 relative">
                    <h2 className="text-3xl md:text-4xl font-display font-black mb-6 text-neo-black">WHO AM I?</h2>
-                   <p className="text-lg md:text-xl font-semibold leading-relaxed mb-4 text-neo-black">
+                   <p className="text-sm md:text-lg font-semibold leading-relaxed mb-4 text-neo-black">
                      I&apos;m a frontend engineer who loves to break the mold. I specialize in building unique, high-performance web applications that leave a lasting impression.
                    </p>
                    <p className="text-lg mb-6 border-l-4 italic border-neo-black pl-4 text-neo-black">
@@ -33,8 +33,7 @@ export const About: React.FC = () => {
                      <span className="px-3 py-1 bg-white border-2 border-neo-black font-bold text-sm shadow-[2px_2px_0px_0px_black] text-neo-black">WebGL</span>
                    </div>
                  </BrutalistCard>
-                 {/* Background Shadow Card */}
-                 <div className="absolute inset-0 bg-neo-black dark:bg-white border-[3px] border-black dark:border-white transform translate-x-4 translate-y-4 -z-0"></div>
+                
                </div>
              </ScrollReveal>
           </div>
@@ -44,7 +43,7 @@ export const About: React.FC = () => {
               <ScrollReveal key={index} delay={index * 0.1} width="100%">
                 <div className="group">
                   <div className={`
-                    bg-white dark:bg-neo-dark-gray border-[3px] border-neo-black dark:border-neo-cream p-6 flex flex-col items-center justify-center gap-2
+                    bg-white dark:bg-neo-dark-gray border-[2px] border-neo-black dark:border-neo-cream p-4 flex flex-col items-center justify-center gap-2
                     shadow-neo transition-transform duration-200 ease-in-out group-hover:-translate-y-2 group-hover:shadow-neo-lg
                     ${index % 2 === 0 ? '-rotate-2' : 'rotate-2'}
                   `}>

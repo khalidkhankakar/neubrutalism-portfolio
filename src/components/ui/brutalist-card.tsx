@@ -18,7 +18,7 @@ export const BrutalistCard: React.FC<BrutalistCardProps> = ({
             className={`
         relative border-[3px] border-neo-black dark:border-neo-cream p-6 ${color} 
         shadow-neo transition-all duration-300 ease-out
-        ${hoverEffect ? 'hover:-translate-y-1 hover:translate-x-1 hover:shadow-neo-lg' : ''}
+        ${hoverEffect ? 'hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg' : ''}
         ${className}
       `}
         >
@@ -40,9 +40,9 @@ export const BrutalistButton: React.FC<BrutalistButtonProps> = ({
     const baseStyle = "px-3 py-2 font-bold border-2 border-neo-black dark:border-neo-cream md:text-lg text-sm transition-all duration-200 ease-out active:translate-y-1 active:shadow-none flex items-center justify-center gap-2";
 
     const variants = {
-        primary: "bg-neo-pink text-white shadow-neo hover:-translate-y-1 hover:translate-x-1 hover:shadow-neo-lg",
-        secondary: "bg-neo-yellow text-neo-black shadow-neo hover:-translate-y-1 hover:translate-x-1 hover:shadow-neo-lg",
-        outline: "bg-transparent text-neo-black dark:text-neo-cream shadow-neo hover:bg-neo-black dark:hover:bg-neo-cream hover:text-white dark:hover:text-neo-black hover:-translate-y-1 hover:translate-x-1 hover:shadow-neo-lg"
+        primary: "bg-neo-pink text-white shadow-neo hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg",
+        secondary: "bg-neo-yellow text-neo-black shadow-neo hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg",
+        outline: "bg-transparent text-neo-black dark:text-neo-cream shadow-neo hover:bg-neo-black dark:hover:bg-neo-cream hover:text-white dark:hover:text-neo-black hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg"
     };
 
     return (
