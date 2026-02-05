@@ -24,6 +24,7 @@ export const Hero: React.FC = () => {
     return (
         <section id="hero" className="min-h-screen pt-32 pb-20 px-4 md:px-8 flex items-center justify-center relative overflow-hidden bg-neo-cream dark:bg-neo-black transition-colors duration-300">
             {/* Background Decor */}
+            
             <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0.5 }}

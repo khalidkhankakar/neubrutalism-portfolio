@@ -9,6 +9,7 @@ import { Skills } from "@/components/shared/skills";
 export default function Home() {
   return (
     <div >
+  
       <Hero />
       <About />
       <Projects />

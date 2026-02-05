@@ -62,9 +62,9 @@ export const Projects: React.FC = () => {
                 <div className="relative  h-full">
                   
                   {/* 3D Depth Layer */}
-                  <div className={`absolute inset-0 ${project.color} border-[3px] border-neo-black dark:border-neo-cream translate-x-4 translate-y-4 rounded-xl -z-10`}></div>
+                  <div className={`absolute inset-0 ${project.color} border-[3px] border-neo-black dark:border-neo-cream translate-x-4 translate-y-4  -z-10`}></div>
                   
-                  <BrutalistCard className="h-full flex flex-col p-0 overflow-hidden rounded-xl bg-white dark:bg-neo-dark-gray border-neo-black dark:border-neo-cream">
+                  <BrutalistCard className="h-full flex flex-col p-0 overflow-hidden  bg-white dark:bg-neo-dark-gray border-neo-black dark:border-neo-cream">
                     {/* Image Header */}
                     <div className="relative h-48 overflow-hidden border-b-[3px] border-neo-black dark:border-neo-cream  transition-all duration-300">
                       <img 

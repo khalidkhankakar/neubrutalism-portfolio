@@ -45,6 +45,14 @@ const images = [
         caption: "FUEL",
         rotation: -2,
         color: "bg-neo-purple"
+    },
+    {
+        id: 6,
+        src: "/pics/img1.jfif",
+        alt: "Coffee Art",
+        caption: "FUEL",
+        rotation: -2,
+        color: "bg-neo-purple"
     }
 ];
 
@@ -80,27 +88,29 @@ export const Gallery: React.FC = () => {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 auto-rows-[300px]">
+                <div className="flex justify-center flex-wrap gap-12">
                     {images.map((img, index) => (
-                        <ScrollReveal key={img.id} delay={index * 0.1} width="100%" >
+                        <ScrollReveal key={img.id} delay={index * 0.1} width="fit-content">
                             <motion.div
                                 key={img.id}
                                 layoutId={`container-${img.id}`}
                                 onClick={() => setSelectedId(img.id)}
                                 className={`
-                  relative cursor-pointer group h-full w-full
-                  ${index === 0 ? 'md:col-span-2 md:row-span-2 h-[600px]' : ''}
-                  ${index === 3 ? 'md:col-span-2' : ''}
+                    relative cursor-pointer group
+                    w-64 h-64
+                    md:w-96 md:h-96
                 `}
                                 initial={{ rotate: img.rotation }}
                                 whileHover={{ scale: 1.02, rotate: 0, zIndex: 10 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             >
                                 {/* Back Shadow Block */}
-                                <div className={`absolute inset-0 ${img.color} border-[3px] border-black dark:border-neo-cream translate-x-3 translate-y-3 transition-transform group-hover:translate-x-5 group-hover:translate-y-5`}></div>
+                                <div
+                                    className={`absolute inset-0 ${img.color} border-[3px] border-black dark:border-neo-cream translate-x-3 translate-y-3 transition-transform group-hover:translate-x-5 group-hover:translate-y-5`}
+                                ></div>
 
                                 {/* Main Card */}
-                                <div className="absolute inset-0 bg-white dark:bg-neo-black border-[3px] border-black dark:border-neo-cream p-3 flex flex-col shadow-sm">
+                                <div className="absolute inset-0 bg-white dark:bg-neo-black border-[2px] border-black dark:border-neo-cream p-3 flex flex-col shadow-sm">
                                     <div className="relative flex-1 overflow-hidden border-2 border-black dark:border-neo-cream bg-gray-100">
                                         <motion.img
                                             layoutId={`img-${img.id}`}
