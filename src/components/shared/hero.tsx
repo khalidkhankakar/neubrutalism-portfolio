@@ -1,10 +1,22 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Github, Twitter, Linkedin } from 'lucide-react';
+import { ArrowDown, Github, Twitter, Linkedin, LucideIcon } from 'lucide-react';
 import { BrutalistButton } from '@/components/ui/brutalist-card';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+
+interface SocialLink {
+    icon: LucideIcon;
+    href: string;
+    label: string;
+}
 
 export const Hero: React.FC = () => {
+    const socialLinks: SocialLink[] = [
+        { icon: Github, href: 'https://github.com/khalidkhankakar/', label: 'GitHub' },
+        { icon: Twitter, href: 'https://x.com/KhalidK37931474', label: 'Twitter' },
+        { icon: Linkedin, href: 'https://www.linkedin.com/in/khalid-khan-kakar1/', label: 'LinkedIn' },
+    ];
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -24,7 +36,7 @@ export const Hero: React.FC = () => {
     return (
         <section id="hero" className="min-h-screen pt-32 pb-20 px-4 md:px-8 flex items-center justify-center relative overflow-hidden bg-neo-cream dark:bg-neo-black transition-colors duration-300">
             {/* Background Decor */}
-            
+
             <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 0.5 }}
@@ -90,12 +102,18 @@ export const Hero: React.FC = () => {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="flex flex-wrap gap-4 pt-4"
                     >
-                        <BrutalistButton variant="primary">
-                            VIEW PROJECTS
-                        </BrutalistButton>
-                        <BrutalistButton variant="outline">
-                            CONTACT ME
-                        </BrutalistButton>
+
+                        <Link href="/resume/khalid-kakar-resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <BrutalistButton variant="primary">
+                                VIEW RESUME
+                            </BrutalistButton>
+                        </Link>
+
+                        <Link href={'#contact'}>
+                            <BrutalistButton variant="outline">
+                                CONTACT ME
+                            </BrutalistButton>
+                        </Link>
                     </motion.div>
 
                     <motion.div
@@ -104,11 +122,21 @@ export const Hero: React.FC = () => {
                         transition={{ duration: 0.5, delay: 0.8 }}
                         className="flex gap-4 pt-8"
                     >
-                        {[Github, Twitter, Linkedin].map((Icon, idx) => (
-                            <a key={idx} href="#" className="p-2 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all text-neo-black dark:text-neo-cream">
-                                <Icon size={20} />
-                            </a>
-                        ))}
+                        {socialLinks.map((social) => {
+                            const Icon = social.icon;
+                            return (
+                                <Link
+                                    key={social.label}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
+                                    className="p-2 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all text-neo-black dark:text-neo-cream"
+                                >
+                                    <Icon size={20} />
+                                </Link>
+                            );
+                        })}
                     </motion.div>
                 </div>
 
@@ -123,12 +151,12 @@ export const Hero: React.FC = () => {
                     <div
                         className="relative w-full max-w-md aspect-square transition-transform duration-100 ease-out"
                         style={{
-                            
+
                             transformStyle: 'preserve-3d'
                         }}
                     >
                         {/* Back Card */}
-                        
+
 
                         {/* Middle Decorative Elements */}
                         <div className="absolute -top-3 md:-top-10 right-3 md:-right-10 size-12 md:size-20 bg-neo-yellow border-2 border-black  dark:border-neo-cream rounded-full shadow-neo flex items-center justify-center transform translate-z-5 animate-bounce-slow">

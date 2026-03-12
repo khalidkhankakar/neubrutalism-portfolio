@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useLayoutEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -11,17 +11,23 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>(() => {
-        // Check local storage or system preference
-        if (typeof window !== 'undefined') {
-            const savedTheme = localStorage.getItem('theme') as Theme;
-            if (savedTheme) return savedTheme;
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-        }
-        return 'light';
-    });
+    const [theme, setTheme] = useState<Theme>('light');
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        // Initialize theme after mount to avoid hydration mismatch
+        const savedTheme = localStorage.getItem('theme') as Theme;
+        const themeToUse = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        // Update state and DOM synchronously
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setTheme(themeToUse);
+        const root = window.document.documentElement;
+        root.classList.remove('light', 'dark');
+        root.classList.add(themeToUse);
+    }, []);
+
+    useLayoutEffect(() => {
+        // Update DOM when theme changes
         const root = window.document.documentElement;
         root.classList.remove('light', 'dark');
         root.classList.add(theme);

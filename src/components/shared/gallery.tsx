@@ -3,54 +3,52 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Maximize2, Camera } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
-import Image from 'next/image';
-
 const images = [
     {
         id: 1,
-        src: "/pics/img1.jfif",
-        alt: "Workspace Setup",
-        caption: "CHAOS STATION",
+        src: "/pics/khalid-kakar-1.jpeg",
+        alt: "Khalid kakar",
+        caption: "Seriously Cool",
         rotation: -3,
         color: "bg-neo-pink"
     },
     {
         id: 2,
-        src: "/pics/img1.jfif",
-        alt: "Design Sketch",
-        caption: "BRAINSTORMING",
+        src: "/pics/khalid-kakar-2.jpeg",
+        alt: "Khalid kakar",
+        caption: "Just Playing Around",
         rotation: 2,
         color: "bg-neo-yellow"
     },
     {
         id: 3,
-        src: "/pics/img1.jfif",
-        alt: "Code Snippet",
-        caption: "LATE NIGHTS",
+        src: "/pics/khalid-kakar-3.jpeg",
+        alt: "Khalid kakar",
+        caption: "Enjoying the Party",
         rotation: -1,
         color: "bg-neo-blue"
     },
     {
         id: 4,
-        src: "/pics/img1.jfif",
-        alt: "Conference",
+        src: "/pics/khalid-kakar-4.jpeg",
+        alt: "khalid kakar",
         caption: "IN THE WILD",
         rotation: 4,
         color: "bg-neo-mint"
     },
     {
         id: 5,
-        src: "/pics/img1.jfif",
-        alt: "Coffee Art",
-        caption: "FUEL",
+        src: "/pics/khalid-kakar-5.jpeg",
+        alt: "khalid kakar",
+        caption: "Vibe Check",
         rotation: -2,
         color: "bg-neo-purple"
     },
     {
         id: 6,
-        src: "/pics/img1.jfif",
-        alt: "Coffee Art",
-        caption: "FUEL",
+        src: "/pics/khalid-kakar-6.jpeg",
+        alt: "khalid kakar",
+        caption: "With Flowers",
         rotation: -2,
         color: "bg-neo-purple"
     }

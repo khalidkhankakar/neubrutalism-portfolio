@@ -4,18 +4,16 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { BrutalistButton } from '@/components/ui/brutalist-card';
 import { useTheme } from '@/context/theme-context';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 export const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
 
     const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Gallery', href: '#gallery' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Articles', href: '#articles' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Blogs', href: '/blogs' },
+        { name: 'Projects', href: '/#projects' },
+        { name: 'Contact', href: '/#contact' },
     ];
 
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -44,26 +42,24 @@ export const Navbar: React.FC = () => {
             <div className="max-w-7xl mx-auto flex justify-between items-start">
                 {/* Logo */}
                 <div className="pointer-events-auto flex items-center gap-4">
-                    <a
-                        href="#"
-                        onClick={(e) => handleScroll(e, '#hero')}
+                    <Link
+                        href="/"
                         className="inline-block bg-white dark:bg-neo-black border-2 border-neo-black dark:border-neo-cream px-3 py-1 font-display text-lg md:xl shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300 text-neo-black dark:text-neo-cream"
                     >
-                        DEV<span className="text-neo-pink">.</span>IO
-                    </a>
+                        KHALID<span className="text-neo-pink">.</span>IO
+                    </Link>
                 </div>
 
                 {/* Desktop Menu - Hidden on Tablet (md) and Mobile, Visible on Large (lg) */}
                 <div className="hidden lg:flex gap-4 pointer-events-auto items-center">
-                    {navLinks.splice(4,6).map((link) => (
-                        <a
+                    {navLinks.map((link) => (
+                        <Link
                             key={link.name}
                             href={link.href}
-                            onClick={(e) => handleScroll(e, link.href)}
                             className="bg-white dark:bg-neo-black border-2 border-neo-black dark:border-neo-cream px-3 py-1 font-semibold shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all duration-300 text-neo-black dark:text-neo-cream"
                         >
                             {link.name}
-                        </a>
+                        </Link>
                     ))}
 
                     <button
@@ -91,9 +87,11 @@ export const Navbar: React.FC = () => {
                         </div>
                     </button>
 
+                    <Link href="/resume/khalid-kakar-resume.pdf" target="_blank" rel="noopener noreferrer">
                     <BrutalistButton variant="primary" className="py-2 text-base">
-                        HIRE ME
+                        RESUME
                     </BrutalistButton>
+                    </Link>
                 </div>
 
                 {/* Mobile/Tablet Menu Button - Visible on md and smaller */}
@@ -125,18 +123,19 @@ export const Navbar: React.FC = () => {
                         className="absolute top-24 right-4 left-4 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream shadow-neo-lg p-6 flex flex-col gap-4 lg:hidden pointer-events-auto z-50 origin-top"
                     >
                         {navLinks.map((link) => (
-                            <a
+                            <Link 
                                 key={link.name}
                                 href={link.href}
-                                onClick={(e) => handleScroll(e, link.href)}
                                 className="text-xl font-bold hover:text-neo-pink dark:hover:text-neo-pink border-b-2 border-neo-black dark:border-neo-cream pb-2 text-neo-black dark:text-neo-cream transition-colors duration-200"
                             >
                                 {link.name.toUpperCase()}
-                            </a>
+                            </Link>
                         ))}
-                        <BrutalistButton onClick={() => setIsOpen(false)} variant="primary" className="w-full mt-2">
-                            HIRE ME
+                        <Link href="/resume/khalid-kakar-resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <BrutalistButton variant="primary" className="w-full mt-2">
+                            RESUME
                         </BrutalistButton>
+                        </Link>
                     </motion.div>
                 )}
             </AnimatePresence>

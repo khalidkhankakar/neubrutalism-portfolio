@@ -4,33 +4,34 @@ import { BrutalistButton, BrutalistCard } from '@/components/ui/brutalist-card';
 import { ExternalLink, Github } from 'lucide-react';
 import { Project }  from '@/utils/types';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import Link from 'next/link';
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "NEO-DASHBOARD",
-    description: "A high-contrast analytics dashboard for data lovers.",
-    tags: ["React", "D3.js", "Tailwind"],
-    imageUrl: "https://picsum.photos/seed/dash/600/400",
-    link: "#",
+    title: "Vision Board",
+    description: "A real-time collaborative drawing application that empowers organizations to create and collaborate on drawing boards, much like Figma!",
+    tags: ["LiveBlocks", "Nextjs", "TypeScript"],
+    imageUrl: "/project/vision-board.png",
+    link: "https://github.com/khalidkhankakar/vision-board",
     color: "bg-neo-blue"
   },
   {
     id: 2,
-    title: "RETRO GAME",
-    description: "Browser-based platformer built with Phaser.js.",
-    tags: ["Phaser", "TypeScript", "Webpack"],
-    imageUrl: "https://picsum.photos/seed/game/600/400",
-    link: "#",
+    title: "FireGrid",
+    description: "FireGrid is task management and collaboration tool inspired by Trello. It offers an intuitive Kanban board interface for organizing and tracking tasks eed and scalability, FireGrid leverages the latest features of Next.js 15 RC efficiently.",
+    tags: ["Nextjs", "TypeScript", "Webpack"],
+    imageUrl: "/project/firegird.jpg",
+    link: "https://github.com/khalidkhankakar/Fire-Grid",
     color: "bg-neo-pink"
   },
   {
     id: 3,
-    title: "CRYPTO WALLET",
-    description: "Web3 wallet interface with brutalist aesthetics.",
-    tags: ["Web3", "Ethers.js", "React"],
-    imageUrl: "https://picsum.photos/seed/crypto/600/400",
-    link: "#",
+    title: "Dev Post",
+    description: "This project is a fully-featured clone of the popular Dev Community platform, where developers can create, share, and manage their articles. Built with modern web technologies, it offers a seamless user experience, advanced search capabilities, and secure authentication.",
+    tags: ["Nextjs", "Reactjs", "React"],
+    imageUrl: "/project/devpost.png",
+    link: "https://github.com/khalidkhankakar/devpost",
     color: "bg-neo-mint"
   }
 ];
@@ -85,7 +86,7 @@ export const Projects: React.FC = () => {
                     {/* Content */}
                     <div className="p-6 flex-1 flex flex-col">
                       <h3 className="text-2xl font-black font-display mb-2 text-neo-black dark:text-neo-cream">{project.title}</h3>
-                      <p className="text-gray-700 dark:text-gray-300 font-medium mb-6 flex-1">{project.description}</p>
+                      <p className="text-gray-700 dark:text-gray-300 font-medium mb-6 flex-1">{project.description.substring(0, 100)}</p>
                       
                       <div className="flex flex-wrap gap-2 mt-auto">
                         {project.tags.map(tag => (
@@ -94,10 +95,11 @@ export const Projects: React.FC = () => {
                           </span>
                         ))}
                       </div>
-
+                      <Link href={project.link} target='_blank'>
                       <BrutalistButton variant="secondary" className="w-full mt-6 text-sm py-2">
                         VIEW DETAILS
                       </BrutalistButton>
+                      </Link>
                     </div>
                   </BrutalistCard>
                 </div>

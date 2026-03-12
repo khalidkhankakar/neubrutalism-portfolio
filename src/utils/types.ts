@@ -22,3 +22,18 @@ export interface SocialLink {
   url: string;
   icon: React.ReactNode;
 }
+
+export interface Blog {
+  _id: string;
+  id: string;
+  slug: string;
+  title: string;
+  content: string;
+  image: string;
+  description: string;
+  tags: { _id: string; name: string }[];
+  views?: number;
+  upvotes?: number;
+  createdAt: string;
+  updatedAt: string;
+}

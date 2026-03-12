@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
-import { Terminal, Database, Layout, Cpu, Globe, Server } from 'lucide-react';
+import { Terminal, Layout, Server } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 export const Skills: React.FC = () => {
   const skills = [
     { name: "Frontend", icon: <Layout />, items: ["React", "TypeScript", "Tailwind", "Next.js"], color: "bg-neo-pink" },
-    { name: "Backend", icon: <Server />, items: ["Node.js", "Python", "PostgreSQL", "GraphQL"], color: "bg-neo-blue" },
-    { name: "Tools", icon: <Terminal />, items: ["Git", "Docker", "AWS", "Figma"], color: "bg-neo-yellow" },
+    { name: "Backend", icon: <Server />, items: ["Node.js", "Python", "PostgreSQL", "Trpc"], color: "bg-neo-blue" },
+    { name: "Tools", icon: <Terminal />, items: ["Git", "Docker", "VS Code", "AI & LLMs & MCP"], color: "bg-neo-yellow" },
   ];
 
   return (

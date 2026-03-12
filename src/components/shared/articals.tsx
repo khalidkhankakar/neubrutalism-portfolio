@@ -3,30 +3,35 @@ import React from 'react';
 import { BrutalistCard, BrutalistButton } from '@/components/ui/brutalist-card';
 import { ArrowUpRight, Tag } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import Link from 'next/link';
 
+// TODO: fetch articals form
 const articles = [
   {
-    id: 1,
-    title: "Why Minimal Design is Dead (And Why That's Good)",
-    date: "OCT 24",
-    snippet: "Minimalism had its run, but the web is craving chaos, color, and personality again. Enter Neubrutalism.",
-    tags: ["Design", "Opinion"],
+    id: 1,    
+    title: "Next.Js Server Actions",
+    slug:"next.js-server-actions",
+    date: "MAR 24",
+    snippet: "You will explore in this blog that what is Next.js server actions and how they work with pratical examples",
+    tags: ["Nextjs", "Javascript", "ReactJs"],
     color: "bg-neo-yellow"
   },
   {
     id: 2,
-    title: "React Server Components: A Love-Hate Story",
-    date: "SEP 15",
-    snippet: "Navigating the complexity of the new React architecture while trying to keep my sanity intact.",
-    tags: ["React", "Tech"],
+    title: "5 useful Typescript tips and tricks",
+    slug:"5-useful-typescript-tips-and-tricks",
+    date: "MAR 20",
+    snippet: "Learn more about the typescript such as generics, as const keyword, destructing array and object in typescript and more.",
+    tags: ["React", "Typescript"],
     color: "bg-neo-mint"
   },
   {
     id: 3,
-    title: "CSS Grid is Magic, Flexbox is Logic",
-    date: "AUG 02",
-    snippet: "Understanding when to use which layout system to build robust, responsive interfaces without headaches.",
-    tags: ["CSS", "Tutorial"],
+    title: "Common Utility Types of TypeScript",
+    date: "MAR 25",
+    slug:"common-utility-types-of-typescript",
+    snippet: "Learn about the TypeScript Utility Types How they modify other types and make life easior for generate the other types.",
+    tags: ["Typescript"],
     color: "bg-neo-pink"
   }
 ];
@@ -87,9 +92,9 @@ export const Articles: React.FC = () => {
 
                     {/* Action */}
                     <div className="shrink-0">
-                      <button className="w-full md:w-12 h-12 bg-neo-yellow border-[3px] border-black dark:border-neo-cream flex items-center justify-center shadow-neo group-hover:shadow-neo-lg group-hover:bg-neo-pink group-hover:text-white transition-all text-neo-black">
+                      <Link href={`/blogs/${article.slug}`} className="w-full md:w-12 h-12 bg-neo-yellow border-[3px] border-black dark:border-neo-cream flex items-center justify-center shadow-neo group-hover:shadow-neo-lg group-hover:bg-neo-pink group-hover:text-white transition-all text-neo-black">
                         <ArrowUpRight size={24} strokeWidth={3} />
-                      </button>
+                      </Link>
                     </div>
 
                   </div>
@@ -100,9 +105,11 @@ export const Articles: React.FC = () => {
         </div>
         
         <div className="mt-12 ">
+          <Link href={'/blogs'} className='cursor-pointer'>
             <BrutalistButton variant="secondary" className="w-full">
               VIEW ALL POSTS
             </BrutalistButton>
+          </Link>
         </div>
       </div>
     </section>
