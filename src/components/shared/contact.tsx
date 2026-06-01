@@ -1,57 +1,47 @@
 'use client';
+
 import React from 'react';
-import { BrutalistButton } from '@/components/ui/brutalist-card';
-import { Mail, ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import Link from 'next/link';
 
 export const Contact: React.FC = () => {
   return (
-    <footer id="contact" className="bg-neo-yellow border-t-4 border-neo-black dark:border-neo-cream py-20 px-4 transition-colors duration-300">
-      <div className="max-w-4xl mx-auto text-center space-y-12">
-
+    <footer id="contact" className="px-[var(--page-gutter)] py-[var(--space-3xl)]">
+      <div className="editorial-container border-t border-[var(--color-rule)] pt-[var(--space-xl)]">
         <ScrollReveal width="100%">
-          <div className="relative inline-block">
-            <h2 className="text-6xl md:text-9xl font-black font-display text-neo-black relative z-10 mix-blend-multiply">
-              LET&apos;S TALK
-            </h2>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[50%] bg-white border-[3px] border-neo-black -rotate-2 z-0"></div>
+          <div className="grid gap-[var(--space-xl)] lg:grid-cols-[minmax(0,8fr)_minmax(18rem,4fr)]">
+            <div>
+              <p className="editorial-smallcaps mb-4 text-[var(--color-accent)]">Letter close</p>
+              <h2 className="editorial-display text-[length:var(--text-display-s)] italic text-[var(--color-ink)]">
+                Let&apos;s make the next thing legible.
+              </h2>
+            </div>
+
+            <aside className="flex flex-col justify-end gap-5 border-t border-[var(--color-rule)] pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <p className="font-display text-3xl italic leading-tight text-[var(--color-ink)]">
+                Yours,<br />
+                <span className="not-italic">Khalid Khan Kakar</span>
+              </p>
+              <p className="leading-7 text-[var(--color-ink-2)]">
+                P.S. Project notes, product ideas, and thoughtful hellos are welcome.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <Link target="_blank" href="mailto:khalidkhankakar2468@gmail.com" className="editorial-smallcaps inline-flex items-center justify-center gap-3 border border-[var(--color-ink)] bg-[var(--color-ink)] px-4 py-3 text-[var(--color-paper)] transition-colors hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]">
+                  <Mail size={18} /> Say hello <ArrowRight size={16} />
+                </Link>
+                <Link target="_blank" href="https://wa.me/03708218757" className="editorial-smallcaps inline-flex items-center justify-center gap-3 border border-[var(--color-rule)] px-4 py-3 text-[var(--color-ink)] transition-colors hover:border-[var(--color-ink)] hover:bg-[var(--color-paper-2)]">
+                  <MessageCircle size={18} /> WhatsApp <ArrowRight size={16} />
+                </Link>
+              </div>
+            </aside>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal width="100%" delay={0.2}>
-          <p className="text-2xl font-bold max-w-2xl mx-auto text-neo-black">
-            Got a project that needs some bold energy? Or just want to say hi?
-            My inbox is always open for cool ideas.
-          </p>
-        </ScrollReveal>
-
-        <ScrollReveal width="100%" delay={0.4}>
-          <div className="flex flex-col w-full items-center sm:flex-row justify-center gap-6">
-            <Link target='_blank' href="mailto:khalidkhankakar2468@gmail.com" className="group">
-              <BrutalistButton className="text-2xl px-12 py-6 bg-neo-black text-white hover:bg-white hover:text-black hover:border-black shadow-[8px_8px_0px_0px_white]">
-                <span className="flex items-center gap-4">
-                  <Mail /> SAY HELLO <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                </span>
-              </BrutalistButton>
-            </Link>
-
-            <Link target='_blank' href="https://wa.me/03708218757" className="group">
-              <BrutalistButton className="text-2xl px-12 py-6 bg-neo-black text-white hover:bg-white hover:text-black hover:border-black shadow-[8px_8px_0px_0px_white]">
-                <span className="flex items-center gap-4">
-                  <MessageCircle /> WHATSAPP <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                </span>
-              </BrutalistButton>
-            </Link>
-          </div>
-        </ScrollReveal>
-
-        <div className="pt-12 flex flex-col md:flex-row justify-between items-center gap-4 font-bold border-t-[3px] border-neo-black  text-neo-black">
-          <p>© 2026 .</p>
-          <p><span className="text-neo-pink">♥</span> KHALID KHAN KAKAR</p>
+        <div className="editorial-smallcaps mt-[var(--space-xl)] flex flex-col justify-between gap-3 border-t border-[var(--color-rule)] pt-4 text-[var(--color-muted)] md:flex-row">
+          <p>© 2026</p>
+          <p>Khalid Khan Kakar</p>
         </div>
-
-  
       </div>
     </footer>
   );

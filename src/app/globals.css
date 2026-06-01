@@ -1,33 +1,17 @@
+/* Hallmark · genre: editorial · macrostructure: Long Document · theme: Newsprint · enrichment: none · nav: N6 · footer: Ft6 · pre-emit critique: P5 H4 E4 S4 R5 V4 */
+@import "../../tokens.css";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 
-:root {
-  /* Color Palette */
-  --neo-yellow: #FFD60A;
-  --neo-blue: #4CC9F0;
-  --neo-pink: #F72585;
-  --neo-purple: #7209B7;
-  --neo-mint: #4ECDC4;
-  --neo-cream: #FFFDF5;
-  --neo-black: #121212;
-  --neo-dark-gray: #1E1E1E;
-
-  /* Theme Defaults */
-  --shadow-color: var(--neo-black);
-}
-
-.dark {
-  --shadow-color: var(--neo-cream);
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-cormorant);
 
   --background: var(--neo-cream);
   --foreground: var(--neo-black);
@@ -49,9 +33,9 @@
   --shadow-neo-xl: 15px 15px 0px 0px var(--shadow-color);
   --shadow-neo-sm: 3px 3px 0px 0px var(--shadow-color);
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-delayed: float 6s ease-in-out 3s infinite;
-  --animate-bounce-slow: bounce 3s infinite;
+  --animate-float: float 6s var(--ease-in-out) infinite;
+  --animate-float-delayed: float 6s var(--ease-in-out) 3s infinite;
+  --animate-bounce-slow: none;
   --animate-spin-slow: spin 12s linear infinite;
 
   @keyframes float {
@@ -61,22 +45,21 @@
 }
 
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 @layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   html {
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
   }
 }
 
 .dark body {
-  background-color: var(--neo-black);
-  color: var(--neo-cream);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
 }
 
 body,
@@ -92,68 +75,105 @@ h3,
 section,
 footer {
   transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-  transition-duration: 400ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--dur-med);
+  transition-timing-function: var(--ease-out);
 }
 
 
 body {
-  background-color: var(--neo-cream);
-  color: var(--neo-black);
-  overflow-x: hidden;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
   margin: 0;
 }
 
+a {
+  text-underline-offset: 0.18em;
+}
 
-/* Grain Overlay */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.editorial-shell {
+  background:
+    linear-gradient(90deg, color-mix(in oklch, var(--color-rule) 30%, transparent) 1px, transparent 1px) 0 0 / clamp(3rem, 8vw, 7rem) 100%,
+    var(--color-paper);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+
+.editorial-container {
+  width: min(100% - (var(--page-gutter) * 2), 76rem);
+  margin-inline: auto;
+}
+
+.editorial-measure {
+  max-width: 65ch;
+}
+
+.editorial-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.9;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.editorial-smallcaps {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.editorial-rule {
+  border-color: var(--color-rule);
+}
+
 .grain-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='0.75' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--neo-cream);
-  border-left: 3px solid var(--neo-black);
-  transition: background-color 0.4s ease, border-color 0.4s ease;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: var(--neo-black);
-  border-left: 3px solid var(--neo-cream);
+  background: var(--color-paper);
+  border-left: var(--rule-hair) solid var(--color-rule);
+  transition: background-color var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neo-pink);
-  border: 3px solid var(--neo-black);
-  transition: border-color 0.4s ease;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  border: 3px solid var(--neo-cream);
+  background: var(--color-accent);
+  border: 2px solid var(--color-paper);
+  transition: border-color var(--dur-med) var(--ease-out);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neo-purple);
+  background: var(--color-ink);
 }
 
 
 pre {
-  background: #0d0d0d;
-  border-radius: 0.5rem;
-  color: #fff;
-  font-family: 'JetBrainsMono', monospace;
+  background: var(--color-ink);
+  border-radius: var(--radius-card);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
   padding: 0.75rem 1rem;
 
   code {
@@ -165,7 +185,7 @@ pre {
 
   .hljs-comment,
   .hljs-quote {
-    color: #616161;
+    color: var(--color-muted);
   }
 
   .hljs-variable,
@@ -178,7 +198,7 @@ pre {
   .hljs-name,
   .hljs-selector-id,
   .hljs-selector-class {
-    color: #f98181;
+    color: var(--color-accent);
   }
 
   .hljs-number,
@@ -188,23 +208,23 @@ pre {
   .hljs-literal,
   .hljs-type,
   .hljs-params {
-    color: #fbbc88;
+    color: var(--color-accent);
   }
 
   .hljs-string,
   .hljs-symbol,
   .hljs-bullet {
-    color: #b9f18d;
+    color: var(--color-accent-2);
   }
 
   .hljs-title,
   .hljs-section {
-    color: #faf594;
+    color: var(--color-paper-3);
   }
 
   .hljs-keyword,
   .hljs-selector-tag {
-    color: #70cff8;
+    color: var(--color-accent-2);
   }
 
   .hljs-emphasis {
@@ -213,5 +233,16 @@ pre {
 
   .hljs-strong {
     font-weight: 700;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 120ms !important;
   }
 }

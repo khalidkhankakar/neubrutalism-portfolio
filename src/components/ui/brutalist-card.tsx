@@ -3,22 +3,22 @@ import React from 'react';
 interface BrutalistCardProps {
     children: React.ReactNode;
     className?: string;
-    color?: string; // Hex or tailwind class for bg
+    color?: string;
     hoverEffect?: boolean;
 }
 
 export const BrutalistCard: React.FC<BrutalistCardProps> = ({
     children,
     className = '',
-    color = 'bg-white dark:bg-neo-black',
+    color = 'bg-[var(--color-paper)]',
     hoverEffect = true
 }) => {
     return (
         <div
             className={`
-        relative border-[3px] border-neo-black dark:border-neo-cream p-6 ${color} 
-        shadow-neo transition-all duration-300 ease-out
-        ${hoverEffect ? 'hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg' : ''}
+        relative border-y border-[var(--color-rule)] p-6 ${color}
+        transition-[border-color,background-color,color,transform] duration-[var(--dur-med)] ease-[var(--ease-out)]
+        ${hoverEffect ? 'hover:border-[var(--color-ink)] hover:-translate-y-0.5' : ''}
         ${className}
       `}
         >
@@ -37,12 +37,12 @@ export const BrutalistButton: React.FC<BrutalistButtonProps> = ({
     className = '',
     ...props
 }) => {
-    const baseStyle = "px-3 py-2 font-bold border-2 border-neo-black dark:border-neo-cream md:text-lg text-sm transition-all duration-200 ease-out active:translate-y-1 active:shadow-none flex items-center justify-center gap-2";
+    const baseStyle = "px-4 py-2 editorial-smallcaps border border-[var(--color-ink)] transition-[background-color,color,transform,border-color] duration-[var(--dur-short)] ease-[var(--ease-out)] active:translate-y-px flex items-center justify-center gap-2 disabled:opacity-50 disabled:pointer-events-none";
 
     const variants = {
-        primary: "bg-neo-pink text-white shadow-neo hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg",
-        secondary: "bg-neo-yellow text-neo-black shadow-neo hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg",
-        outline: "bg-transparent text-neo-black dark:text-neo-cream shadow-neo hover:bg-neo-black dark:hover:bg-neo-cream hover:text-white dark:hover:text-neo-black hover:-translate-y-0.5 hover:translate-x-0.5 hover:shadow-neo-lg"
+        primary: "bg-[var(--color-ink)] text-[var(--color-paper)] hover:bg-[var(--color-accent)] hover:border-[var(--color-accent)]",
+        secondary: "bg-[var(--color-paper)] text-[var(--color-ink)] hover:bg-[var(--color-paper-2)]",
+        outline: "bg-transparent text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)]"
     };
 
     return (

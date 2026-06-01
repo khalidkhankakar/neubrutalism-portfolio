@@ -1,10 +1,11 @@
 'use client';
+
 import React from 'react';
-import { BrutalistButton, BrutalistCard } from '@/components/ui/brutalist-card';
-import { ExternalLink, Github } from 'lucide-react';
-import { Project }  from '@/utils/types';
+import { ArrowUpRight, Github } from 'lucide-react';
+import { Project } from '@/utils/types';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const projects: Project[] = [
   {
@@ -14,96 +15,77 @@ const projects: Project[] = [
     tags: ["LiveBlocks", "Nextjs", "TypeScript"],
     imageUrl: "/project/vision-board.png",
     link: "https://github.com/khalidkhankakar/vision-board",
-    color: "bg-neo-blue"
+    color: "bg-[var(--color-accent)]"
   },
   {
     id: 2,
     title: "FireGrid",
-    description: "FireGrid is task management and collaboration tool inspired by Trello. It offers an intuitive Kanban board interface for organizing and tracking tasks eed and scalability, FireGrid leverages the latest features of Next.js 15 RC efficiently.",
+    description: "A task management and collaboration tool inspired by Trello, with an intuitive Kanban interface for organizing and tracking tasks.",
     tags: ["Nextjs", "TypeScript", "Webpack"],
     imageUrl: "/project/firegird.jpg",
     link: "https://github.com/khalidkhankakar/Fire-Grid",
-    color: "bg-neo-pink"
+    color: "bg-[var(--color-accent-2)]"
   },
   {
     id: 3,
     title: "Dev Post",
-    description: "This project is a fully-featured clone of the popular Dev Community platform, where developers can create, share, and manage their articles. Built with modern web technologies, it offers a seamless user experience, advanced search capabilities, and secure authentication.",
+    description: "A fully-featured Dev Community style platform where developers can create, share, search, and manage articles.",
     tags: ["Nextjs", "Reactjs", "React"],
     imageUrl: "/project/devpost.png",
     link: "https://github.com/khalidkhankakar/devpost",
-    color: "bg-neo-mint"
+    color: "bg-[var(--color-paper-3)]"
   }
 ];
 
 export const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-24 px-4 md:px-8 bg-neo-cream dark:bg-neo-black relative transition-colors duration-300">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none transition-opacity" 
-           style={{ backgroundImage: 'radial-gradient(currentColor 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}>
-      </div>
-
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="px-[var(--page-gutter)] py-[var(--space-3xl)]">
+      <div className="editorial-container">
         <ScrollReveal width="100%">
-          <div className="mb-16 text-center">
-            <span className="inline-block bg-neo-yellow border-[3px] border-neo-black dark:border-neo-cream px-6 py-2 text-xl font-bold shadow-neo mb-4 -rotate-2 text-neo-black">
-              MY WORK
-            </span>
-            <h2 className="text-5xl md:text-7xl font-display font-black text-neo-black dark:text-neo-cream">
-              FEATURED PROJECTS
+          <div className="mb-[var(--space-xl)] grid gap-6 border-t border-[var(--color-rule)] pt-[var(--space-lg)] lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+            <p className="editorial-smallcaps text-[var(--color-accent)]">Selected work</p>
+            <h2 className="font-display text-5xl italic leading-none text-[var(--color-ink)] md:text-7xl">
+              Projects that show the system in motion.
             </h2>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
           {projects.map((project, idx) => (
-            <ScrollReveal key={project.id} delay={idx * 0.15} width="100%">
-              <div className="group  h-full">
-                <div className="relative  h-full">
-                  
-                  {/* 3D Depth Layer */}
-                  <div className={`absolute inset-0 ${project.color} border-[3px] border-neo-black dark:border-neo-cream translate-x-4 translate-y-4  -z-10`}></div>
-                  
-                  <BrutalistCard className="h-full flex flex-col p-0 overflow-hidden  bg-white dark:bg-neo-dark-gray border-neo-black dark:border-neo-cream">
-                    {/* Image Header */}
-                    <div className="relative h-48 overflow-hidden border-b-[3px] border-neo-black dark:border-neo-cream  transition-all duration-300">
-                      <img 
-                        src={project.imageUrl} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 "
-                      />
-                      <div className="absolute top-2 right-2 flex gap-2">
-                        <div className="bg-white border-2 border-neo-black p-1 shadow-sm text-neo-black">
-                          <Github size={16} />
-                        </div>
-                        <div className="bg-white border-2 border-neo-black p-1 shadow-sm text-neo-black">
-                          <ExternalLink size={16} />
-                        </div>
-                      </div>
-                    </div>
+            <ScrollReveal key={project.id} delay={idx * 0.1} width="100%">
+              <article className="grid gap-[var(--space-lg)] py-[var(--space-xl)] lg:grid-cols-[minmax(0,4fr)_minmax(0,5fr)_minmax(10rem,3fr)]">
+                <Link href={project.link} target="_blank" className="group block overflow-hidden border border-[var(--color-rule)] bg-[var(--color-paper-2)]">
+                  <Image
+                    src={project.imageUrl}
+                    alt={project.title}
+                    width={720}
+                    height={540}
+                    className="aspect-[4/3] h-full w-full object-cover grayscale transition duration-[var(--dur-med)] ease-[var(--ease-out)] group-hover:scale-[1.015] group-hover:grayscale-0"
+                  />
+                </Link>
 
-                    {/* Content */}
-                    <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-2xl font-black font-display mb-2 text-neo-black dark:text-neo-cream">{project.title}</h3>
-                      <p className="text-gray-700 dark:text-gray-300 font-medium mb-6 flex-1">{project.description.substring(0, 100)}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {project.tags.map(tag => (
-                          <span key={tag} className="text-xs font-bold bg-neo-black dark:bg-neo-cream text-white dark:text-neo-black px-2 py-1">
-                            #{tag.toUpperCase()}
-                          </span>
-                        ))}
-                      </div>
-                      <Link href={project.link} target='_blank'>
-                      <BrutalistButton variant="secondary" className="w-full mt-6 text-sm py-2">
-                        VIEW DETAILS
-                      </BrutalistButton>
-                      </Link>
-                    </div>
-                  </BrutalistCard>
+                <div className="flex min-w-0 flex-col justify-between gap-6">
+                  <div>
+                    <p className="editorial-smallcaps mb-3 text-[var(--color-muted)]">Case {String(idx + 1).padStart(2, '0')}</p>
+                    <h3 className="font-display text-4xl italic leading-none text-[var(--color-ink)] md:text-5xl">{project.title}</h3>
+                    <p className="mt-4 leading-7 text-[var(--color-ink-2)]">{project.description}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="editorial-smallcaps border border-[var(--color-rule)] px-3 py-1 text-[var(--color-ink)]">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+
+                <div className="flex items-start justify-between gap-4 lg:flex-col lg:items-end">
+                  <Github size={20} className="text-[var(--color-muted)]" />
+                  <Link href={project.link} target="_blank" className="editorial-smallcaps inline-flex items-center gap-2 border-b border-[var(--color-ink)] pb-1 text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]">
+                    View source <ArrowUpRight size={16} />
+                  </Link>
+                </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>

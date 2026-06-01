@@ -1,187 +1,102 @@
 'use client'
+
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Maximize2, Camera } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Maximize2, X } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
+
 const images = [
-    {
-        id: 1,
-        src: "/pics/khalid-kakar-1.jpeg",
-        alt: "Khalid kakar",
-        caption: "Seriously Cool",
-        rotation: -3,
-        color: "bg-neo-pink"
-    },
-    {
-        id: 2,
-        src: "/pics/khalid-kakar-2.jpeg",
-        alt: "Khalid kakar",
-        caption: "Just Playing Around",
-        rotation: 2,
-        color: "bg-neo-yellow"
-    },
-    {
-        id: 3,
-        src: "/pics/khalid-kakar-3.jpeg",
-        alt: "Khalid kakar",
-        caption: "Enjoying the Party",
-        rotation: -1,
-        color: "bg-neo-blue"
-    },
-    {
-        id: 4,
-        src: "/pics/khalid-kakar-4.jpeg",
-        alt: "khalid kakar",
-        caption: "IN THE WILD",
-        rotation: 4,
-        color: "bg-neo-mint"
-    },
-    {
-        id: 5,
-        src: "/pics/khalid-kakar-5.jpeg",
-        alt: "khalid kakar",
-        caption: "Vibe Check",
-        rotation: -2,
-        color: "bg-neo-purple"
-    },
-    {
-        id: 6,
-        src: "/pics/khalid-kakar-6.jpeg",
-        alt: "khalid kakar",
-        caption: "With Flowers",
-        rotation: -2,
-        color: "bg-neo-purple"
-    }
+    { id: 1, src: "/pics/khalid-kakar-1.jpeg", alt: "Khalid kakar", caption: "Seriously Cool" },
+    { id: 2, src: "/pics/khalid-kakar-2.jpeg", alt: "Khalid kakar", caption: "Just Playing Around" },
+    { id: 3, src: "/pics/khalid-kakar-3.jpeg", alt: "Khalid kakar", caption: "Enjoying the Party" },
+    { id: 4, src: "/pics/khalid-kakar-4.jpeg", alt: "Khalid kakar", caption: "In The Wild" },
+    { id: 5, src: "/pics/khalid-kakar-5.jpeg", alt: "Khalid kakar", caption: "Vibe Check" },
+    { id: 6, src: "/pics/khalid-kakar-6.jpeg", alt: "Khalid kakar", caption: "With Flowers" }
 ];
 
 export const Gallery: React.FC = () => {
     const [selectedId, setSelectedId] = useState<number | null>(null);
-
     const selectedImage = images.find(img => img.id === selectedId);
 
     return (
-        <section id="gallery" className="py-24 px-4 md:px-8 bg-white dark:bg-neo-black border-t-[4px] border-neo-black dark:border-neo-cream overflow-hidden relative transition-colors duration-300">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-                <div className="absolute top-20 left-10 w-32 h-32 border-4 border-neo-black dark:border-neo-cream rounded-full border-dashed animate-spin-slow"></div>
-                <div className="absolute bottom-40 right-10 w-64 h-64 bg-neo-yellow rotate-12 -z-10"></div>
-            </div>
-
-            <div className="max-w-7xl mx-auto">
+        <section id="gallery" className="px-[var(--page-gutter)] py-[var(--space-3xl)]">
+            <div className="editorial-container">
                 <ScrollReveal width="100%">
-                    <div className="text-center mb-20 relative">
-                        <div className="inline-block relative">
-                            <span className="absolute -top-6 -right-6 text-neo-pink transform rotate-12">
-                                <Camera size={48} strokeWidth={2.5} />
-                            </span>
-                            <h2 className="text-6xl md:text-8xl font-display font-black text-neo-black dark:text-neo-cream relative z-10">
-                                VISUAL <br className="md:hidden" /> DUMP
+                    <div className="mb-[var(--space-xl)] grid gap-6 border-t border-[var(--color-rule)] pt-[var(--space-lg)] lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+                        <p className="editorial-smallcaps text-[var(--color-accent)]">Gallery</p>
+                        <div>
+                            <h2 className="font-display text-5xl italic leading-none text-[var(--color-ink)] md:text-7xl">
+                                A small visual appendix.
                             </h2>
-                            <div className="absolute -bottom-2 left-0 w-full h-6 bg-neo-mint -z-0 transform -rotate-2"></div>
+                            <p className="mt-5 max-w-2xl leading-7 text-[var(--color-ink-2)]">
+                                A collection of pixels, memories, and field notes from outside the editor.
+                            </p>
                         </div>
-                        <p className="mt-8 text-xl font-bold max-w-2xl mx-auto border-2 border-neo-black dark:border-neo-cream p-4 shadow-neo bg-white dark:bg-neo-dark-gray text-neo-black dark:text-neo-cream rotate-1">
-                            A collection of pixels, memories, and things that look cool.
-                            <span className="block text-sm text-gray-500 dark:text-gray-400 mt-2 font-mono">  CLICK TO EXPAND</span>
-                        </p>
                     </div>
                 </ScrollReveal>
 
-                <div className="flex justify-center flex-wrap gap-12">
+                <div className="grid grid-cols-1 gap-[var(--space-md)] sm:grid-cols-2 lg:grid-cols-3">
                     {images.map((img, index) => (
-                        <ScrollReveal key={img.id} delay={index * 0.1} width="fit-content">
-                            <motion.div
-                                key={img.id}
+                        <ScrollReveal key={img.id} delay={index * 0.06} width="100%">
+                            <motion.button
+                                type="button"
                                 layoutId={`container-${img.id}`}
                                 onClick={() => setSelectedId(img.id)}
-                                className={`
-                    relative cursor-pointer group
-                    w-64 h-64
-                    md:w-96 md:h-96
-                `}
-                                initial={{ rotate: img.rotation }}
-                                whileHover={{ scale: 1.02, rotate: 0, zIndex: 10 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                className="group w-full border border-[var(--color-rule)] bg-[var(--color-paper)] p-3 text-left transition-colors hover:border-[var(--color-ink)]"
+                                whileHover={{ y: -3 }}
+                                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                {/* Back Shadow Block */}
-                                <div
-                                    className={`absolute inset-0 ${img.color} border-[3px] border-black dark:border-neo-cream translate-x-3 translate-y-3 transition-transform group-hover:translate-x-5 group-hover:translate-y-5`}
-                                ></div>
-
-                                {/* Main Card */}
-                                <div className="absolute inset-0 bg-white dark:bg-neo-black border-[2px] border-black dark:border-neo-cream p-3 flex flex-col shadow-sm">
-                                    <div className="relative flex-1 overflow-hidden border-2 border-black dark:border-neo-cream bg-gray-100">
-                                        <motion.img
-                                            layoutId={`img-${img.id}`}
-                                            src={img.src}
-                                            alt={img.alt}
-                                            className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                                        />
-
-                                        {/* Hover Overlay */}
-                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                            <div className="bg-white border-2 border-black p-2 rounded-full shadow-neo transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                                                <Maximize2 size={24} className="text-black" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Caption */}
-                                    <div className="mt-3 text-center relative">
-                                        <span className="font-display font-black text-xl tracking-wider uppercase bg-transparent z-10 relative text-neo-black dark:text-neo-cream">
-                                            {img.caption}
-                                        </span>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                <span className="relative block overflow-hidden bg-[var(--color-paper-2)]">
+                                    <motion.img
+                                        layoutId={`img-${img.id}`}
+                                        src={img.src}
+                                        alt={img.alt}
+                                        className="aspect-[4/5] w-full object-cover grayscale transition duration-[var(--dur-med)] ease-[var(--ease-out)] group-hover:scale-[1.015] group-hover:grayscale-0"
+                                    />
+                                    <span className="absolute right-3 top-3 grid size-9 place-items-center border border-[var(--color-rule)] bg-[var(--color-paper)] text-[var(--color-ink)] opacity-0 transition-opacity group-hover:opacity-100">
+                                        <Maximize2 size={16} />
+                                    </span>
+                                </span>
+                                <span className="editorial-smallcaps mt-3 block text-[var(--color-muted)]">{img.caption}</span>
+                            </motion.button>
                         </ScrollReveal>
                     ))}
                 </div>
             </div>
 
-            {/* Lightbox Modal */}
             <AnimatePresence>
                 {selectedId && selectedImage && (
                     <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
-                        <motion.div
+                        <motion.button
+                            type="button"
+                            aria-label="Close gallery"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setSelectedId(null)}
-                            className="absolute inset-0 bg-neo-black/90 backdrop-blur-sm cursor-zoom-out"
+                            className="absolute inset-0 bg-[color-mix(in_oklch,var(--color-ink)_86%,transparent)]"
                         />
 
-                        <motion.div
+                        <motion.figure
                             layoutId={`container-${selectedImage.id}`}
-                            className="relative w-full max-w-4xl bg-white dark:bg-neo-black border-4 border-neo-black dark:border-neo-cream p-4 md:p-6 shadow-neo-xl z-10 overflow-hidden"
+                            className="relative z-10 w-full max-w-4xl border border-[var(--color-rule)] bg-[var(--color-paper)] p-3"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="flex justify-between items-center mb-4 border-b-4 border-neo-black dark:border-neo-cream pb-2">
-                                <h3 className="text-3xl font-black font-display text-neo-black dark:text-neo-cream">{selectedImage.caption}</h3>
-                                <button
-                                    onClick={() => setSelectedId(null)}
-                                    className="bg-neo-pink text-white border-2 border-black p-1 hover:bg-black transition-colors cursor-pointer"
-                                >
-                                    <X size={32} />
-                                </button>
-                            </div>
-
-                            <div className="relative aspect-video border-[3px] border-black dark:border-neo-cream overflow-hidden bg-gray-100">
-                                <motion.img
-                                    layoutId={`img-${selectedImage.id}`}
-                                    src={selectedImage.src}
-                                    alt={selectedImage.alt}
-                                    className="w-full h-full object-contain"
-                                />
-                            </div>
-
-                            <div className="mt-4 flex justify-between items-center">
-                                <div className="flex gap-2">
-                                    <span className="bg-neo-yellow border-2 border-black px-3 py-1 font-bold text-sm text-black">#PHOTOGRAPHY</span>
-                                    <span className="bg-neo-mint border-2 border-black px-3 py-1 font-bold text-sm text-black">#VISUALS</span>
-                                </div>
-                                <span className="font-mono font-bold text-gray-500 dark:text-gray-400">ID: {selectedImage.id}</span>
-                            </div>
-                        </motion.div>
+                            <button
+                                onClick={() => setSelectedId(null)}
+                                className="absolute right-3 top-3 z-20 grid size-10 place-items-center border border-[var(--color-rule)] bg-[var(--color-paper)] text-[var(--color-ink)] hover:border-[var(--color-ink)]"
+                                aria-label="Close image"
+                            >
+                                <X size={20} />
+                            </button>
+                            <motion.img
+                                layoutId={`img-${selectedImage.id}`}
+                                src={selectedImage.src}
+                                alt={selectedImage.alt}
+                                className="max-h-[78vh] w-full object-contain"
+                            />
+                            <figcaption className="editorial-smallcaps mt-3 text-[var(--color-muted)]">{selectedImage.caption}</figcaption>
+                        </motion.figure>
                     </div>
                 )}
             </AnimatePresence>

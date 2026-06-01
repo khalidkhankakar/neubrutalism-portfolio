@@ -1,57 +1,47 @@
 'use client';
+
 import React from 'react';
-import { Terminal, Layout, Server } from 'lucide-react';
+import { Layout, Server, Terminal } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
 export const Skills: React.FC = () => {
   const skills = [
-    { name: "Frontend", icon: <Layout />, items: ["React", "TypeScript", "Tailwind", "Next.js"], color: "bg-neo-pink" },
-    { name: "Backend", icon: <Server />, items: ["Node.js", "Python", "PostgreSQL", "Trpc"], color: "bg-neo-blue" },
-    { name: "Tools", icon: <Terminal />, items: ["Git", "Docker", "VS Code", "AI & LLMs & MCP"], color: "bg-neo-yellow" },
+    { name: "Frontend", icon: <Layout size={20} />, items: ["React", "TypeScript", "Tailwind", "Next.js"] },
+    { name: "Backend", icon: <Server size={20} />, items: ["Node.js", "Python", "PostgreSQL", "Trpc"] },
+    { name: "Tools", icon: <Terminal size={20} />, items: ["Git", "Docker", "VS Code", "AI & LLMs & MCP"] },
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 md:px-8 bg-neo-black dark:bg-neo-cream text-white dark:text-neo-black border-t-4 border-black dark:border-neo-cream transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
-         <ScrollReveal width="100%">
-           <div className="flex flex-col md:flex-row items-start justify-between mb-16 gap-8">
-              <h2 className="text-5xl md:text-7xl font-display font-black text-white dark:text-neo-black">
-                THE <br/> <span className="text-transparent bg-clip-text bg-linear-to-r from-neo-pink to-neo-yellow">TOOLKIT</span>
-              </h2>
-              <div className="bg-white dark:bg-neo-black text-black dark:text-neo-cream p-6 border-[3px] border-neo-mint shadow-[8px_8px_0px_0px_#4ECDC4] max-w-sm transform rotate-1">
-                <p className="font-bold text-lg">
-                  I don&apos;t just use tools; I bend them to my will. Here is my arsenal of choice for digital destruction (creation).
-                </p>
-              </div>
-           </div>
-         </ScrollReveal>
+    <section id="skills" className="px-[var(--page-gutter)] py-[var(--space-3xl)]">
+      <div className="editorial-container grid gap-[var(--space-xl)] border-t border-[var(--color-rule)] pt-[var(--space-xl)] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <ScrollReveal width="100%">
+          <div>
+            <p className="editorial-smallcaps mb-4 text-[var(--color-accent)]">Toolkit</p>
+            <h2 className="font-display text-5xl italic leading-none text-[var(--color-ink)] md:text-7xl">
+              Tools, chosen for composure.
+            </h2>
+          </div>
+        </ScrollReveal>
 
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {skills.map((skill, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.2} direction="up" width="100%">
-                <div className="relative group h-full">
-                  <div className={`absolute inset-0 ${skill.color} border-[3px] border-white dark:border-neo-black translate-x-3 translate-y-3`}></div>
-                  <div className="relative bg-white dark:bg-neo-black text-black dark:text-neo-cream border-[3px] border-black dark:border-neo-black p-8 hover:-translate-y-2 hover:-translate-x-2 transition-transform duration-200 h-full">
-                     <div className="flex items-center gap-4 mb-6 border-b-4 border-black dark:border-neo-cream pb-4">
-                       <div className={`p-3 ${skill.color} border-2 border-black shadow-neo-sm text-black`}>
-                         {skill.icon}
-                       </div>
-                       <h3 className="text-2xl font-black">{skill.name.toUpperCase()}</h3>
-                     </div>
-                     
-                     <div className="space-y-3">
-                       {skill.items.map((item, i) => (
-                         <div key={i} className="flex items-center justify-between font-bold text-lg group/item">
-                            <span>{item}</span>
-                            <span className="w-2 h-2 bg-black dark:bg-neo-cream opacity-0 group-hover/item:opacity-100 transition-opacity"></span>
-                         </div>
-                       ))}
-                     </div>
-                  </div>
+        <div className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
+          {skills.map((skill, idx) => (
+            <ScrollReveal key={skill.name} delay={idx * 0.1} width="100%">
+              <div className="grid gap-6 py-6 sm:grid-cols-[12rem_minmax(0,1fr)]">
+                <div className="editorial-smallcaps flex items-center gap-3 text-[var(--color-accent)]">
+                  {skill.icon}
+                  {skill.name}
                 </div>
-              </ScrollReveal>
-            ))}
-         </div>
+                <div className="flex flex-wrap gap-x-5 gap-y-2">
+                  {skill.items.map((item) => (
+                    <span key={item} className="font-display text-2xl italic text-[var(--color-ink)]">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   );

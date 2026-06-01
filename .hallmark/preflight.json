@@ -1,0 +1,13 @@
+{
+  "date": "2026-06-01",
+  "framework": "Next.js 16 app router",
+  "font_stack": "next/font Google with Geist, Geist Mono, and Cormorant Garamond",
+  "palette": "Hallmark editorial OKLCH tokens in tokens.css",
+  "motion": "framer-motion installed; motion kept quiet and opacity/transform based",
+  "spacing": "4-point semantic CSS custom-property scale",
+  "preserved": [
+    "homepage section order",
+    "project/article/contact content intent",
+    "existing routes and component ownership"
+  ]
+}

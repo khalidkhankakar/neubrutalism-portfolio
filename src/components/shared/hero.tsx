@@ -1,7 +1,7 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Github, Twitter, Linkedin, LucideIcon } from 'lucide-react';
-import { BrutalistButton } from '@/components/ui/brutalist-card';
+
+import React from 'react';
+import { ArrowDown, Github, Linkedin, LucideIcon, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -17,203 +17,66 @@ export const Hero: React.FC = () => {
         { icon: Twitter, href: 'https://x.com/KhalidK37931474', label: 'Twitter' },
         { icon: Linkedin, href: 'https://www.linkedin.com/in/khalid-khan-kakar1/', label: 'LinkedIn' },
     ];
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!containerRef.current) return;
-            const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-            const x = (e.clientX - left) / width - 0.5;
-            const y = (e.clientY - top) / height - 0.5;
-            setMousePos({ x, y });
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
 
     return (
-        <section id="hero" className="min-h-screen pt-32 pb-20 px-4 md:px-8 flex items-center justify-center relative overflow-hidden bg-neo-cream dark:bg-neo-black transition-colors duration-300">
-            {/* Background Decor */}
-
-            <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 0.5 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="absolute top-30 left-10 w-12 h-12 bg-neo-yellow border-2 border-neo-black dark:border-neo-cream rounded-full shadow-neo animate-float z-0"
-            ></motion.div>
-            <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 0.5 }}
-                transition={{ duration: 1, delay: 0.8 }}
-                className="absolute bottom-40 right-10 w-24 h-24 bg-neo-purple border-[3px] border-neo-black dark:border-neo-cream transform rotate-12 shadow-neo animate-float-delayed -z-0"
-            ></motion.div>
-
-            <div className=" mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12  items-center relative z-10" ref={containerRef}>
-
-                {/* Left Content */}
-                <div className="space-y-8 ">
-                    <motion.div
-                        initial={{ x: -100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="inline-block bg-neo-mint border border-neo-black dark:border-neo-cream px-4 py-1 font-semibold shadow-neo-sm transform -rotate-2 text-neo-black"
-                    >
-                        FULL STACK DEVELOPER
-                    </motion.div>
-
-                    <motion.h1
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-4xl md:text-6xl  font-display font-black leading-tight text-neo-black dark:text-neo-cream drop-shadow-sm"
-                    >
-                        I BUILD <br />
-                        <span className="text-neo-pink relative inline-block">
-                            DIGITAL
-                            <svg className="absolute w-full h-4 -bottom-1 left-0" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                <motion.path
-                                    d="M0 5 Q 50 10 100 5"
-                                    stroke="currentColor"
-                                    strokeWidth="6"
-                                    fill="none"
-                                    initial={{ pathLength: 0 }}
-                                    animate={{ pathLength: 1 }}
-                                    transition={{ duration: 1, delay: 1 }}
-                                />
-                            </svg>
-                        </span> <br />
-                        EXPERIENCES
-                    </motion.h1>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-300 max-w-lg border-l-4 border-neo-black dark:border-neo-cream pl-6"
-                    >
-                        Turning chaotic ideas into structured, high-performance web applications with a touch of madness.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
-                        className="flex flex-wrap gap-4 pt-4"
-                    >
-
-                        <Link href="/resume/khalid-kakar-resume.pdf" target="_blank" rel="noopener noreferrer">
-                            <BrutalistButton variant="primary">
-                                VIEW RESUME
-                            </BrutalistButton>
-                        </Link>
-
-                        <Link href={'#contact'}>
-                            <BrutalistButton variant="outline">
-                                CONTACT ME
-                            </BrutalistButton>
-                        </Link>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.8 }}
-                        className="flex gap-4 pt-8"
-                    >
-                        {socialLinks.map((social) => {
-                            const Icon = social.icon;
-                            return (
-                                <Link
-                                    key={social.label}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={social.label}
-                                    className="p-2 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream shadow-neo hover:-translate-y-1 hover:shadow-neo-lg transition-all text-neo-black dark:text-neo-cream"
-                                >
-                                    <Icon size={20} />
-                                </Link>
-                            );
-                        })}
-                    </motion.div>
-                </div>
-
-                {/* Right 3D Centerpiece */}
+        <section id="hero" className="relative px-[var(--page-gutter)] pb-[var(--space-3xl)] pt-[var(--space-2xl)]">
+            <div className="editorial-container">
                 <motion.div
-                    initial={{ scale: 0.8, opacity: 0, rotateY: 90 }}
-                    animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-                    transition={{ duration: 1, delay: 0.2, type: "spring" }}
-                    className="relative w-full  flex items-center justify-center "
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid gap-[var(--space-xl)] border-b border-[var(--color-rule)] pb-[var(--space-2xl)] lg:grid-cols-[minmax(0,8fr)_minmax(18rem,4fr)]"
                 >
-                    {/* Interactive 3D Container */}
-                    <div
-                        className="relative w-full max-w-md aspect-square transition-transform duration-100 ease-out"
-                        style={{
-
-                            transformStyle: 'preserve-3d'
-                        }}
-                    >
-                        {/* Back Card */}
-
-
-                        {/* Middle Decorative Elements */}
-                        <div className="absolute -top-3 md:-top-10 right-3 md:-right-10 size-12 md:size-20 bg-neo-yellow border-2 border-black  dark:border-neo-cream rounded-full shadow-neo flex items-center justify-center transform translate-z-5 animate-bounce-slow">
-                            <span className="text-xl md:text-3xl font-semibold text-neo-black">JS</span>
-                        </div>
-
-                        <div className="absolute -bottom-3 left-10  bg-neo-blue border border-black dark:border-neo-cream  flex items-center justify-center transform translate-z-10 -rotate-6">
-                            <span className="text-sm md:text-lg font-black py-1 px-2 text-white">REACT</span>
-                        </div>
-
-                        {/* Main Card (Avatar) */}
-                        <div
-                            className="absolute inset-0 bg-white dark:bg-neo-dark-gray border-4 border-neo-black dark:border-neo-cream rounded-lg shadow-neo-lg  overflow-hidden flex flex-col transform translate-z-0"
-                        >
-                            {/* Browser Header */}
-                            <div className="bg-neo-black h-12 flex items-center px-4 gap-2 border-b-4 border-neo-black dark:border-neo-cream">
-                                <div className="w-4 h-4 rounded-full bg-neo-pink border border-white"></div>
-                                <div className="w-4 h-4 rounded-full bg-neo-yellow border border-white"></div>
-                                <div className="w-4 h-4 rounded-full bg-neo-mint border border-white"></div>
-                                <div className="ml-4 bg-white/20 h-6 w-1/2 rounded-md"></div>
-                            </div>
-
-                            {/* Image / Content */}
-                            <div className="flex-1 bg-neo-purple relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/designer/800/800')] bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500"></div>
-                                <div className="absolute inset-0 bg-linear-to-t from-neo-black/80 to-transparent flex flex-col justify-end p-6">
-                                    <span className="text-white font-black text-3xl">Khalid Kakar</span>
-                                    <span className="text-neo-yellow font-bold">AI ENGINEER</span>
-                                </div>
-
-                                {/* Sticker */}
-                                <div className="absolute top-4 right-4 bg-white border-[3px] border-black px-3 py-1 rotate-12 shadow-neo text-xs md:text-sm  text-neo-black">
-                                    OPEN FOR WORK
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Floating Code Snippet */}
-                        <div className="absolute top-1/2 -right-12 bg-white dark:bg-neo-black border-[3px] border-neo-black dark:border-neo-cream p-4 shadow-neo transform translate-z-[60px] translate-y-12 rotate-3 hidden md:block">
-                            <pre className="font-mono text-sm font-bold text-neo-black dark:text-neo-cream">
-                                {`const awesome = true;
-if (client.needsCool) {
-  createMagic();
-}`}
-                            </pre>
-                        </div>
+                    <div>
+                        <p className="editorial-smallcaps mb-[var(--space-md)] text-[var(--color-accent)]">Full stack developer</p>
+                        <h1 className="editorial-display text-[length:var(--text-display)] text-[var(--color-ink)]">
+                            Digital products, set with care.
+                        </h1>
                     </div>
+
+                    <aside className="flex flex-col justify-end gap-[var(--space-md)] border-t border-[var(--color-rule)] pt-[var(--space-md)] lg:border-l lg:border-t-0 lg:pl-[var(--space-lg)] lg:pt-0">
+                        <p className="font-display text-3xl italic leading-tight text-[var(--color-ink)]">
+                            Turning chaotic ideas into structured, high-performance web applications.
+                        </p>
+                        <p className="leading-7 text-[var(--color-ink-2)]">
+                            I work where product thinking, frontend craft, and practical engineering meet. React, Next.js, TypeScript, APIs, and the small details that make software feel composed.
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                            <Link href="/resume/khalid-kakar-resume.pdf" target="_blank" rel="noopener noreferrer" className="editorial-smallcaps border border-[var(--color-ink)] bg-[var(--color-ink)] px-4 py-2 text-[var(--color-paper)] transition-colors hover:border-[var(--color-accent)] hover:bg-[var(--color-accent)]">
+                                View resume
+                            </Link>
+                            <Link href="#contact" className="editorial-smallcaps border border-[var(--color-rule)] px-4 py-2 text-[var(--color-ink)] transition-colors hover:border-[var(--color-ink)] hover:bg-[var(--color-paper-2)]">
+                                Contact
+                            </Link>
+                        </div>
+                        <div className="flex gap-2 pt-2">
+                            {socialLinks.map((social) => {
+                                const Icon = social.icon;
+                                return (
+                                    <Link
+                                        key={social.label}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={social.label}
+                                        className="grid size-10 place-items-center border border-[var(--color-rule)] text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                                    >
+                                        <Icon size={18} />
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </aside>
                 </motion.div>
             </div>
 
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-2 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+                transition={{ delay: 0.7, duration: 0.4 }}
+                className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 text-[var(--color-muted)] md:block"
             >
-                <ArrowDown size={40} className="text-neo-black dark:text-neo-cream" />
+                <ArrowDown size={28} />
             </motion.div>
         </section>
     );

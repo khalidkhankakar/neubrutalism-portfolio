@@ -8,8 +8,8 @@ import { Skills } from "@/components/shared/skills";
 
 export default function Home() {
   return (
-    <div >
-  
+    <div className="editorial-shell">
+      <div className="grain-overlay" aria-hidden="true" />
       <Hero />
       <About />
       <Projects />
