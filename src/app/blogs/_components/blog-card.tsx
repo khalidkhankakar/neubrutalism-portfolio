@@ -2,7 +2,6 @@
 import { ArrowUpRight, Tag } from 'lucide-react';
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import Link from 'next/link';
-import { BrutalistCard } from '@/components/ui/brutalist-card';
 
 interface Props {
     id: number
@@ -13,51 +12,35 @@ interface Props {
     tags: { _id: string; name: string }[];
 }
 
-export const BlogCard = ({ slug, date, id, snippet, tags, title}: Props) => {
+export const BlogCard = ({ slug, date, id, snippet, tags, title }: Props) => {
     return (
-        <ScrollReveal key={id} width="100%" delay={id * 0.1} direction="up">
-            <div className="group relative h-full">
-                {/* Background Shadow Block */}
-                <div className={`absolute inset-0  border-[3px] border-black dark:border-neo-cream translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 -z-10 transition-transform group-hover:translate-x-6 group-hover:translate-y-6`}></div>
+        <ScrollReveal key={id} width="100%" delay={id * 0.08} direction="up">
+            <article className="group grid gap-5 py-7 md:grid-cols-[7rem_minmax(0,1fr)_3rem] md:items-start">
+                <time className="font-display text-4xl italic leading-none text-[var(--color-accent)] md:text-5xl">
+                    {date}
+                </time>
 
-                <BrutalistCard className="bg-white dark:bg-neo-black hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-300 h-full flex flex-col">
-                    <div className="flex flex-col h-full">
-
-                        {/* Header */}
-                        <div className="flex justify-between items-start mb-6">
-                            <div className="flex flex-wrap gap-2">
-                                {tags.map(tag => (
-                                    <span key={tag.name} className="flex items-center gap-1 text-xs font-bold uppercase bg-gray-100 dark:bg-neo-dark-gray text-neo-black dark:text-neo-cream px-2 py-1 border border-black dark:border-neo-cream rounded-full">
-                                        <Tag size={12} /> {tag.name}
-                                    </span>
-                                ))}
-                            </div>
-
-                        </div>
-
-                        {/* Content */}
-                        <div className="flex-1 mb-6">
-                            <h3 className="text-2xl md:text-3xl font-black font-display mb-4 group-hover:text-neo-purple transition-colors text-neo-black dark:text-neo-cream leading-tight">
-                                {title}
-                            </h3>
-                            <p className="text-gray-700 dark:text-gray-300 font-bold leading-relaxed">
-                                {snippet}
-                            </p>
-                        </div>
-
-                        {/* Footer */}
-                        <div className="flex justify-between items-end mt-auto pt-6 border-t-[3px] border-black dark:border-neo-cream border-dashed">
-                            <div className="font-bold text-lg">
-                                {date}
-                            </div>
-                            <Link href={`/blogs/${slug}`} className="w-12 h-12 bg-neo-yellow border-[3px] border-black dark:border-neo-cream flex items-center justify-center shadow-neo group-hover:shadow-neo-lg group-hover:bg-neo-pink group-hover:text-white transition-all text-neo-black">
-                                <ArrowUpRight size={24} strokeWidth={3} />
-                            </Link>
-                        </div>
-
+                <div className="min-w-0">
+                    <div className="mb-3 flex flex-wrap gap-x-3 gap-y-2">
+                        {tags.map(tag => (
+                            <span key={tag._id ?? tag.name} className="editorial-smallcaps inline-flex items-center gap-1 text-[var(--color-muted)]">
+                                <Tag size={12} /> {tag.name}
+                            </span>
+                        ))}
                     </div>
-                </BrutalistCard>
-            </div>
+
+                    <h2 className="font-display text-3xl italic leading-tight text-[var(--color-ink)] transition-colors group-hover:text-[var(--color-accent)] md:text-5xl">
+                        {title}
+                    </h2>
+                    <p className="mt-3 max-w-2xl leading-7 text-[var(--color-ink-2)]">
+                        {snippet}
+                    </p>
+                </div>
+
+                <Link href={`/blogs/${slug}`} className="grid size-11 place-items-center border border-[var(--color-rule)] text-[var(--color-ink)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]" aria-label={`Read ${title}`}>
+                    <ArrowUpRight size={20} />
+                </Link>
+            </article>
         </ScrollReveal>
     )
 }

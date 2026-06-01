@@ -16,11 +16,11 @@ const { slug } = await params
 
   if (!blog) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-neo-cream dark:bg-neo-black">
-        <div className="text-center">
-          <h1 className="text-4xl font-black font-display mb-4">Post Not Found</h1>
-          <Link href="/blog" className="inline-flex items-center gap-2 font-bold hover:text-neo-pink transition-colors">
-            <ArrowLeft size={20} /> BACK TO BLOG
+      <div className="editorial-shell flex min-h-screen items-center justify-center px-[var(--page-gutter)]">
+        <div className="max-w-xl text-center">
+          <h1 className="font-display text-5xl italic leading-none text-[var(--color-ink)] md:text-7xl">Post not found.</h1>
+          <Link href="/blogs" className="editorial-smallcaps mt-8 inline-flex items-center gap-2 text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent)]">
+            <ArrowLeft size={18} /> Back to blog
           </Link>
         </div>
       </div>
@@ -28,15 +28,13 @@ const { slug } = await params
   }
 
   return (
-    <div className="pt-32 pb-24 px-4 md:px-8 min-h-screen bg-neo-cream dark:bg-neo-black">
+    <div className="editorial-shell min-h-screen px-[var(--page-gutter)] py-[var(--space-3xl)]">
         <BlogDetail
         title={blog.title}
         content={blog.content}
         tags={blog.tags}
         img={blog.image}
-        // color={'bg-neo-dark-gray'}
         date={blog.createdAt}
-        // readTime='2 Min'        
         />
     </div>
   );

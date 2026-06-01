@@ -12,21 +12,21 @@ const page = async () => {
     const allBlogs = await getAllBlogs();
 
     return (
-        <div className="pt-32 pb-24 px-4 md:px-8 min-h-screen bg-neo-cream dark:bg-neo-black">
-            <div className="max-w-5xl mx-auto">
-                <div className="mb-12">
-                    <Link href="/" className="inline-flex items-center gap-2 font-bold mb-8 hover:text-neo-pink transition-colors">
-                        <ArrowLeft size={20} /> BACK TO HOME
+        <div className="editorial-shell min-h-screen px-[var(--page-gutter)] py-[var(--space-3xl)]">
+            <div className="editorial-container">
+                <div className="mb-[var(--space-xl)] border-b border-[var(--color-rule)] pb-[var(--space-xl)]">
+                    <Link href="/" className="editorial-smallcaps mb-8 inline-flex items-center gap-2 text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent)]">
+                        <ArrowLeft size={18} /> Back to home
                     </Link>
-                    <h1 className="text-6xl md:text-8xl font-display font-black text-neo-black dark:text-neo-cream drop-shadow-[5px_5px_0px_var(--shadow-color)] mb-6">
-                        THE <span className="text-neo-pink">BLOGS</span>
+                    <h1 className="editorial-display max-w-4xl text-[length:var(--text-display-s)] italic text-[var(--color-ink)]">
+                        Notes from the workbench.
                     </h1>
-                    <p className="text-xl md:text-2xl font-bold max-w-2xl text-gray-700 dark:text-gray-300">
-                        Thoughts, tutorials, and rants about web development, design, and everything in between.
+                    <p className="mt-6 max-w-2xl font-display text-2xl italic leading-tight text-[var(--color-ink)] md:text-3xl">
+                        Thoughts, tutorials, and field notes about web development, design, and the choices behind the interface.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="divide-y divide-[var(--color-rule)] border-y border-[var(--color-rule)]">
                     {allBlogs?.data?.map((blog: Blog, idx: number) => (
                         <BlogCard
                             id={idx}
@@ -34,7 +34,7 @@ const page = async () => {
                             title={blog.title}
                             date={formatDate(blog.createdAt)}
                             snippet={blog.description}
-                            tags={blog.tags}
+                            tags={blog.tags ?? []}
                             key={blog._id} />
                     ))}
                 </div>

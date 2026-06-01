@@ -2,55 +2,49 @@ import React from 'react'
 
 const Loading = () => {
   return (
-    <div className="max-w-4xl mx-auto animate-pulse">
-      {/* Back Button Skeleton */}
-      <div className="h-6 w-32 bg-gray-300 dark:bg-neo-dark-gray rounded mb-8"></div>
+    <div className="editorial-shell min-h-screen px-[var(--page-gutter)] py-[var(--space-3xl)]">
+      <div className="editorial-container animate-pulse">
+        <div className="mb-8 h-4 w-32 bg-[var(--color-paper-3)]"></div>
 
-      {/* Header Section */}
-      <div className="mb-12">
-        {/* Tags Skeleton */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          <div className="h-8 w-24 bg-gray-300 dark:bg-neo-dark-gray rounded-full"></div>
-          <div className="h-8 w-24 bg-gray-300 dark:bg-neo-dark-gray rounded-full"></div>
-        </div>
+        <div className="mb-12">
+          <div className="mb-6 flex flex-wrap gap-3">
+            <div className="h-4 w-24 bg-[var(--color-paper-3)]"></div>
+            <div className="h-4 w-24 bg-[var(--color-paper-3)]"></div>
+          </div>
 
-        {/* Title Skeleton */}
-        <div className="mb-6 space-y-3">
-          <div className="h-12 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-          <div className="h-12 w-4/5 bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-        </div>
+          <div className="mb-6 space-y-3">
+            <div className="h-16 w-full bg-[var(--color-paper-3)] md:h-24"></div>
+            <div className="h-16 w-4/5 bg-[var(--color-paper-3)] md:h-24"></div>
+          </div>
 
-        {/* Date & Reading Time Skeleton */}
-        <div className="flex flex-wrap items-center gap-6 mb-8">
-          <div className="h-6 w-32 bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-          <div className="h-6 w-32 bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-        </div>
+          <div className="mb-8 flex flex-wrap items-center gap-6">
+            <div className="h-4 w-32 bg-[var(--color-paper-3)]"></div>
+            <div className="h-4 w-32 bg-[var(--color-paper-3)]"></div>
+          </div>
 
-        {/* Author Info Skeleton */}
-        <div className="flex items-center gap-4 p-4 bg-white dark:bg-neo-dark-gray border-[3px] border-gray-300 dark:border-neo-dark-gray">
-          <div className="w-16 h-16 bg-gray-300 dark:bg-neo-dark-gray rounded-full flex-shrink-0"></div>
-          <div className="flex-1 space-y-2">
-            <div className="h-6 w-32 bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-            <div className="h-4 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-            <div className="h-4 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
+          <div className="flex items-center gap-4 border-y border-[var(--color-rule)] py-4">
+            <div className="size-16 flex-shrink-0 bg-[var(--color-paper-3)]"></div>
+            <div className="flex-1 space-y-2">
+              <div className="h-5 w-32 bg-[var(--color-paper-3)]"></div>
+              <div className="h-4 w-full bg-[var(--color-paper-3)]"></div>
+              <div className="h-4 w-full bg-[var(--color-paper-3)]"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Featured Image Skeleton */}
-      <div className="mb-12">
-        <div className="w-full h-[400px] md:h-[500px] bg-gray-300 dark:bg-neo-dark-gray rounded border-[3px] border-gray-300 dark:border-neo-dark-gray"></div>
-      </div>
+        <div className="mb-12">
+          <div className="h-[320px] w-full border border-[var(--color-rule)] bg-[var(--color-paper-3)] md:h-[520px]"></div>
+        </div>
 
-      {/* Content Skeleton */}
-      <div className="space-y-4">
-        <div className="h-6 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-        <div className="h-6 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-        <div className="h-6 w-4/5 bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-        <div className="mt-6 space-y-3">
-          <div className="h-6 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-          <div className="h-6 w-full bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
-          <div className="h-6 w-3/4 bg-gray-300 dark:bg-neo-dark-gray rounded"></div>
+        <div className="mx-auto max-w-[72ch] space-y-4">
+          <div className="h-5 w-full bg-[var(--color-paper-3)]"></div>
+          <div className="h-5 w-full bg-[var(--color-paper-3)]"></div>
+          <div className="h-5 w-4/5 bg-[var(--color-paper-3)]"></div>
+          <div className="mt-6 space-y-3">
+            <div className="h-5 w-full bg-[var(--color-paper-3)]"></div>
+            <div className="h-5 w-full bg-[var(--color-paper-3)]"></div>
+            <div className="h-5 w-3/4 bg-[var(--color-paper-3)]"></div>
+          </div>
         </div>
       </div>
     </div>

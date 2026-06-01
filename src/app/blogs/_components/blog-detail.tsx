@@ -2,7 +2,7 @@
 import { ArrowLeft, Clock, Calendar, Tag } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ObjectId } from 'mongoose'
+import type { ObjectId } from 'mongoose'
 import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { calculateReadingTime } from '@/utils/constant';
 import { formatDate } from '@/utils/date';
@@ -21,76 +21,72 @@ export const BlogDetail = ({ tags,
     img,
     content,}: Props) => {
     return (
-        <div className="max-w-4xl mx-auto">
+        <article className="editorial-container">
             <ScrollReveal width="100%">
-                <Link href="/blogs" className="inline-flex items-center gap-2 font-bold mb-8 hover:text-neo-pink transition-colors">
-                    <ArrowLeft size={20} /> BACK TO BLOG
+                <Link href="/blogs" className="editorial-smallcaps mb-8 inline-flex items-center gap-2 text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent)]">
+                    <ArrowLeft size={18} /> Back to blog
                 </Link>
 
-                {/* Header Section */}
-                <div className="mb-12">
-                    <div className="flex flex-wrap gap-2 mb-6">
+                <header className="mb-[var(--space-xl)] border-b border-[var(--color-rule)] pb-[var(--space-xl)]">
+                    <div className="mb-6 flex flex-wrap gap-x-3 gap-y-2">
                         {tags.map(tag => (
-                            <span key={tag.name} className="flex items-center gap-1 text-sm font-bold uppercase bg-white dark:bg-neo-dark-gray text-neo-black dark:text-neo-cream px-3 py-1 border-2 border-black dark:border-neo-cream rounded-full shadow-neo-sm">
-                                <Tag size={14} /> {tag.name}
+                            <span key={tag.name} className="editorial-smallcaps inline-flex items-center gap-1 text-[var(--color-muted)]">
+                                <Tag size={12} /> {tag.name}
                             </span>
                         ))}
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl font-display font-black text-neo-black dark:text-neo-cream mb-6 leading-tight">
+                    <h1 className="editorial-display max-w-5xl text-[length:var(--text-display-s)] italic text-[var(--color-ink)]">
                         {title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center gap-6 text-gray-700 dark:text-gray-300 font-bold mb-8">
+                    <div className="editorial-smallcaps mt-8 flex flex-wrap items-center gap-6 text-[var(--color-muted)]">
                         <div className="flex items-center gap-2">
-                            <Calendar size={20} />
+                            <Calendar size={16} />
                             <span>{formatDate(date)}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Clock size={20} />
+                            <Clock size={16} />
                             <span>{calculateReadingTime(content)}</span>
                         </div>
                     </div>
 
-                    {/* Author Info */}
-                    <div className="flex items-center gap-4 p-4 bg-white dark:bg-neo-dark-gray border-[3px] border-black dark:border-neo-cream shadow-neo">
+                    <div className="mt-8 flex items-center gap-4 border-y border-[var(--color-rule)] py-4">
                         <Image
                             src={'/pics/khalid-kakar-1.jpeg'}
                             alt={"khalid kakar"}
                             width={100}
                             height={100}
-                            className="w-16 h-16 rounded-full border-2 border-black dark:border-neo-cream object-cover"
+                            className="size-16 border border-[var(--color-rule)] object-cover grayscale"
                         />
                         <div>
-                            <h3 className="font-black text-xl text-neo-black dark:text-neo-cream">Khalid Kakar</h3>
-                            <p className="text-sm text-gray-700 dark:text-gray-300 font-medium mt-1">Khalid simplifies complex modern web development topics into simple words with expertise in Next.js and React.js.</p>
+                            <h3 className="font-display text-2xl italic leading-none text-[var(--color-ink)]">Khalid Kakar</h3>
+                            <p className="mt-1 max-w-2xl text-sm leading-6 text-[var(--color-ink-2)]">Khalid simplifies complex modern web development topics into simple words with expertise in Next.js and React.js.</p>
                         </div>
                     </div>
-                </div>
+                </header>
             </ScrollReveal>
 
-            {/* Featured Image */}
             <ScrollReveal width="100%" delay={0.1}>
-                <div className="mb-12 relative group">
-                    <div className={`absolute inset-0  border-[3px] border-black dark:border-neo-cream translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 -z-10`}></div>
-                    <Image 
+                <figure className="mb-[var(--space-xl)] border border-[var(--color-rule)] bg-[var(--color-paper-2)] p-3">
+                    <Image
                         src={img}
                         width={1200}
-                        height={1200}
+                        height={720}
                         alt={title}
-                        className="w-full h-[400px] md:h-[500px] object-cover border-[3px] border-black dark:border-neo-cream bg-white"
+                        className="h-[320px] w-full object-cover grayscale md:h-[520px]"
                     />
-                </div>
+                    <figcaption className="editorial-smallcaps mt-3 text-[var(--color-muted)]">Featured image</figcaption>
+                </figure>
             </ScrollReveal>
 
-            {/* Content */}
             <ScrollReveal width="100%" delay={0.2}>
                <div
-                className=' prose-lg max-w-none w-full prose-headings:font-title font-default prose mt-4 dark:prose-invert focus:outline-none prose-a:text-neo-pink hover:prose-a:text-neo-purple  text-neo-black dark:text-neo-cream font-medium leading-relaxed'
+                className='editorial-prose prose prose-lg mx-auto mt-4 w-full max-w-[72ch] focus:outline-none prose-headings:font-normal prose-pre:rounded-none'
                 dangerouslySetInnerHTML={{ __html: content }}
             ></div>
             </ScrollReveal>
-        </div>
+        </article>
     )
 }
 

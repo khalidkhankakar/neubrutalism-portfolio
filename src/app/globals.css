@@ -138,6 +138,58 @@ a {
   border-color: var(--color-rule);
 }
 
+.editorial-prose {
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.editorial-prose :where(h1, h2, h3, h4) {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.editorial-prose :where(p, li) {
+  color: var(--color-ink-2);
+  line-height: 1.8;
+}
+
+.editorial-prose :where(a) {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+.editorial-prose :where(a:hover) {
+  color: var(--color-ink);
+}
+
+.editorial-prose :where(blockquote) {
+  border-left: var(--rule-bold) solid var(--color-accent);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.editorial-prose :where(code):not(pre code) {
+  background: var(--color-paper-2);
+  border: var(--rule-hair) solid var(--color-rule);
+  color: var(--color-ink);
+  padding: 0.08rem 0.28rem;
+}
+
+.editorial-prose :where(hr) {
+  border-color: var(--color-rule);
+}
+
+.editorial-prose :where(img) {
+  border: var(--rule-hair) solid var(--color-rule);
+}
+
 .grain-overlay {
   position: fixed;
   inset: 0;
