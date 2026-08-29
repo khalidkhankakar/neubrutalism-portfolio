@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Github, Menu, X,  ChevronDown } from 'lucide-react';
+import { Github, Menu, X, ChevronDown } from 'lucide-react';
 import { useApp, THEME_LIST } from '@/context/AppContext';
 
 export function HeaderNav() {
@@ -27,22 +27,20 @@ export function HeaderNav() {
     { label: 'CONTACT', href: '/#contact', id: 'contact' },
   ];
 
-  // Close palette on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (paletteRef.current && !paletteRef.current.contains(event.target as Node)) {
         setPaletteOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string, isRoute?: boolean) => {
     setMobileMenuOpen(false);
-    if (isRoute) {
-      return; // Let next/link handle standard route navigation
-    }
+    if (isRoute) return;
     if (!isSubPage) {
       e.preventDefault();
       scrollToSection(targetId);
@@ -54,25 +52,23 @@ export function HeaderNav() {
   return (
     <header
       id="siteNav"
-      className="sticky top-0 z-40 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#1d1d1d] transition-all"
+      className="sticky top-0 z-40 border-b border-[#1d1d1d] bg-[#0a0a0a]/90 backdrop-blur-md transition-all"
     >
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-6 h-16">
-          {/* Brand */}
+      <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center gap-6">
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, 'top')}
-            className="group flex items-center gap-2.5 font-mono text-[13px] font-bold tracking-[0.06em] text-[#ececec] hover:text-white transition-colors"
+            className="group flex items-center gap-2.5 font-mono text-[13px] font-bold tracking-[0.06em] text-[#ececec] transition-colors hover:text-white"
             id="brandLink"
           >
-            <span className="w-[11px] h-[11px] border-2 border-[var(--acc)] rotate-45 transition-transform duration-500 ease-out group-hover:rotate-[225deg]" />
+            <span className="h-[11px] w-[11px] rotate-45 border-2 border-[var(--acc)] transition-transform duration-500 ease-out group-hover:rotate-[225deg]" />
             <span>
-              KHALID<b className="text-[var(--acc)] font-bold">KAKAR</b>.PRO
+              KHALID<b className="font-bold text-[var(--acc)]">KAKAR</b>.PRO
             </span>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-6 ml-auto" aria-label="Main Navigation">
+          <nav className="ml-auto hidden items-center gap-6 md:flex" aria-label="Main Navigation">
             {navLinks.map((link) => {
               let isActive = false;
               if (link.id === 'blogs') {
@@ -88,23 +84,13 @@ export function HeaderNav() {
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.id, link.isRoute)}
-                  className={`relative font-mono text-[11px] font-medium tracking-[0.14em] py-1.5 transition-colors duration-200 flex items-center gap-1.5 ${
-                    isActive ? 'text-[var(--acc)] font-bold' : 'text-[#9c9c9c] hover:text-[#ececec]'
+                  className={`relative flex items-center gap-1.5 py-1.5 font-mono text-[11px] font-medium tracking-[0.14em] transition-colors duration-200 ${
+                    isActive ? 'font-bold text-[var(--acc)]' : 'text-[#9c9c9c] hover:text-[#ececec]'
                   }`}
                 >
                   {link.label}
-                  {link.id === 'blogs' && (
-                    <span className="text-[9px] px-1 py-0.2 bg-[#1d1d1d] border border-[#2c2c2c] text-[var(--acc)] tracking-normal font-mono rounded-none">
-                      ESSAYS
-                    </span>
-                  )}
-                  {link.id === 'goodies' && (
-                    <span className="text-[9px] px-1 py-0.2 bg-[#1d1d1d] border border-[#2c2c2c] text-[var(--acc)] tracking-normal font-mono rounded-none">
-                      TOYS
-                    </span>
-                  )}
                   <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-[var(--acc)] transition-all duration-200 ${
+                    className={`absolute -bottom-1 left-0 h-[2px] bg-[var(--acc)] transition-all duration-200 ${
                       isActive ? 'w-full' : 'w-0 hover:w-full'
                     }`}
                   />
@@ -113,30 +99,28 @@ export function HeaderNav() {
             })}
           </nav>
 
-          {/* Right actions */}
-          <div className="flex items-center gap-3 ml-auto md:ml-0">
-            {/* Multi-Color Theme Switcher Dropdown */}
+          <div className="ml-auto flex items-center gap-3 md:ml-0">
             <div className="relative" ref={paletteRef}>
               <button
                 type="button"
                 onClick={() => setPaletteOpen((prev) => !prev)}
                 title={`Current Phosphor: ${currentThemeObj.label}`}
-                className="flex items-center gap-1.5 border border-[#2c2c2c] px-2.5 py-1 text-[10px] font-mono text-[#ececec] hover:border-[var(--acc)] transition-colors bg-[#0e0e0e] cursor-pointer"
+                className="flex cursor-pointer items-center gap-1.5 border border-[#2c2c2c] bg-[#0e0e0e] px-2.5 py-1 text-[10px] font-mono text-[#ececec] transition-colors hover:border-[var(--acc)]"
                 aria-label="Select theme phosphor color"
                 aria-expanded={paletteOpen}
               >
                 <span
-                  className="w-2.5 h-2.5 rounded-full inline-block border border-black/40"
+                  className="inline-block h-2.5 w-2.5 rounded-full border border-black/40"
                   style={{ backgroundColor: currentThemeObj.hex }}
                 />
-                <span className="uppercase font-semibold hidden sm:inline">{theme}</span>
-                <ChevronDown className="w-3 h-3 text-[#666666]" />
+                <span className="hidden font-semibold uppercase sm:inline">{theme}</span>
+                <ChevronDown className="h-3 w-3 text-[#666666]" />
               </button>
 
               {paletteOpen && (
-                <div className="absolute right-0 top-full mt-1.5 w-48 bg-[#0e0e0e] border border-[#2c2c2c] shadow-2xl p-2 z-50 animate-fade-in">
-                  <div className="text-[9px] font-mono text-[#666666] tracking-[0.1em] px-2 py-1 uppercase border-b border-[#1d1d1d] mb-1">
-                    Phosphor Color Palette
+                <div className="absolute right-0 top-full z-50 mt-1.5 w-48 border border-[#2c2c2c] bg-[#0e0e0e] p-2 shadow-2xl">
+                  <div className="mb-1 border-b border-[#1d1d1d] px-2 py-1 font-mono text-[9px] tracking-[0.1em] text-[#666666] uppercase">
+                    Theme Palette
                   </div>
                   <div className="flex flex-col gap-0.5">
                     {THEME_LIST.map((t) => {
@@ -149,15 +133,15 @@ export function HeaderNav() {
                             setTheme(t.id);
                             setPaletteOpen(false);
                           }}
-                          className={`flex items-center justify-between px-2 py-1.5 text-[11px] font-mono text-left transition-colors cursor-pointer ${
+                          className={`flex cursor-pointer items-center justify-between px-2 py-1.5 text-left font-mono text-[11px] transition-colors ${
                             isSelected
-                              ? 'bg-[#181818] text-[#ffffff] font-bold border-l-2 border-[var(--acc)]'
+                              ? 'border-l-2 border-[var(--acc)] bg-[#181818] font-bold text-[#ffffff]'
                               : 'text-[#9c9c9c] hover:bg-[#141414] hover:text-[#ececec]'
                           }`}
                         >
                           <div className="flex items-center gap-2">
                             <span
-                              className="w-2.5 h-2.5 rounded-full border border-black/40"
+                              className="h-2.5 w-2.5 rounded-full border border-black/40"
                               style={{ backgroundColor: t.hex }}
                             />
                             <span>{t.label}</span>
@@ -171,52 +155,47 @@ export function HeaderNav() {
               )}
             </div>
 
-            {/* Live Status indicator */}
             <Link
               href="/#contact"
               onClick={(e) => handleNavClick(e, 'contact')}
-              className="hidden lg:flex items-center gap-2 border border-[#2c2c2c] px-3 py-1 font-mono text-[10px] font-medium tracking-[0.12em] text-[#9c9c9c] hover:border-[var(--green)] hover:text-[#ececec] transition-colors"
+              className="hidden items-center gap-2 border border-[#2c2c2c] px-3 py-1 font-mono text-[10px] font-medium tracking-[0.12em] text-[#9c9c9c] transition-colors hover:border-[var(--green)] hover:text-[#ececec] lg:flex"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--green)] animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--green)] animate-pulse" />
               OPEN TO WORK
             </Link>
 
-            {/* GitHub */}
             <a
               href="https://github.com/khalidkhankakar"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-[#9c9c9c] hover:text-[var(--acc)] transition-colors p-1"
+              className="flex items-center p-1 text-[#9c9c9c] transition-colors hover:text-[var(--acc)]"
               aria-label="Khalid Khan's GitHub Profile"
             >
-              <Github className="w-[18px] h-[18px]" />
+              <Github className="h-[18px] w-[18px]" />
             </a>
 
-            {/* CV Download Mini Button */}
             <button
               id="cvBtn"
               type="button"
               onClick={openCV}
-              className="font-mono text-[10px] font-bold tracking-[0.12em] bg-[var(--acc)] text-black border border-[var(--acc)] px-3 py-1.5 hover:bg-[#ececec] hover:border-[#ececec] transition-colors cursor-pointer"
+              className="cursor-pointer border border-[var(--acc)] bg-[var(--acc)] px-3 py-1.5 font-mono text-[10px] font-bold tracking-[0.12em] text-black transition-colors hover:bg-[#ececec]"
             >
               OPEN CV
             </button>
 
-            {/* Mobile Hamburger Button */}
             <button
               id="burger"
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
-              className="md:hidden flex items-center justify-center p-2 border border-[#2c2c2c] text-[#ececec] hover:border-[var(--acc)] transition-colors bg-[#0e0e0e] cursor-pointer"
+              className="flex cursor-pointer items-center justify-center border border-[#2c2c2c] bg-[#0e0e0e] p-2 text-[#ececec] transition-colors hover:border-[var(--acc)] md:hidden"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-[var(--acc)]" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="h-5 w-5 text-[var(--acc)]" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div
             id="mMenu"
@@ -256,6 +235,7 @@ export function HeaderNav() {
                 </Link>
               );
             })}
+
             <div className="pt-3 pb-1 flex flex-col gap-2">
               <div className="flex items-center justify-between pt-1">
                 <span className="font-mono text-[10px] text-[#666666] tracking-wider uppercase">PHOSPHOR THEME:</span>

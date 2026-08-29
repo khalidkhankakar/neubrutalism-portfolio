@@ -26,23 +26,24 @@ export function SelectedWorkSection({ projects }: SelectedWorkProps) {
 
   return (
     <section id="work" className="border-t border-[#1d1d1d] bg-[#0a0a0a]">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative ticks">
-        {/* Section Header */}
+      <div className="relative mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
         <ScrollReveal delay={120} duration={700} direction="up">
-          <div className="flex flex-wrap justify-between items-baseline gap-4 py-6 border-b border-[#1d1d1d]">
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-xs font-medium tracking-[0.1em] text-[var(--acc)]">02 /</span>
-              <h2 className="font-sans font-semibold text-[clamp(1.35rem,2.6vw,1.9rem)] tracking-[0.02em] uppercase text-[#ececec]">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#1d1d1d] py-6">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] font-medium tracking-[0.16em] text-[var(--acc)] uppercase">
+                02 /
+              </span>
+              <h2 className="font-sans text-[clamp(1.5rem,2.7vw,2rem)] font-semibold tracking-[-0.04em] text-[#ececec]">
                 Selected Work
               </h2>
             </div>
-            <span className="font-mono text-[10.5px] tracking-[0.16em] text-[#666666] uppercase text-right">
-              05 SYSTEMS · ML INFERENCE · AGENTIC CLI · FULL STACK
-            </span>
+            <p className="max-w-xl text-right font-mono text-[10px] tracking-[0.14em] text-[#666666] uppercase">
+              systems · ml · product · tooling
+            </p>
           </div>
         </ScrollReveal>
 
-        <div className="py-8 sm:py-12 divide-y divide-[#1d1d1d] border-b border-[#1d1d1d]">
+        <div className="divide-y divide-[#1d1d1d] border-b border-[#1d1d1d] py-8 sm:py-12">
           {projects.map((project, index) => {
             const isOpen = !!openIds[project.id];
             return (
@@ -52,63 +53,55 @@ export function SelectedWorkSection({ projects }: SelectedWorkProps) {
                     type="button"
                     onClick={() => toggleProject(project.id)}
                     aria-expanded={isOpen}
-                    className="w-full grid grid-cols-[2.5rem_1fr_auto_2rem] sm:grid-cols-[3.2rem_1fr_auto_auto_2rem] gap-3 sm:gap-4 items-center text-left py-5 sm:py-6 cursor-pointer bg-transparent focus:outline-none"
+                    className="grid w-full cursor-pointer grid-cols-[2.5rem_1fr_auto_2rem] items-center gap-3 bg-transparent py-5 text-left focus:outline-none sm:grid-cols-[3.2rem_1fr_auto_auto_2rem] sm:gap-4 sm:py-6"
                   >
                     <span className="font-mono text-xs text-[#666666]">{project.idx}</span>
                     <div>
-                      <div className="flex items-center flex-wrap gap-2">
-                        <span className="font-sans font-semibold text-[clamp(1.05rem,2vw,1.3rem)] text-[#ececec] group-hover:text-[var(--acc)] transition-colors">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-sans text-[clamp(1.05rem,2vw,1.3rem)] font-semibold text-[#ececec] transition-colors group-hover:text-[var(--acc)]">
                           {project.name}
                         </span>
                         {project.isOss && (
-                          <span className="font-mono text-[8.5px] font-bold tracking-[0.14em] text-[var(--acc)] border border-[var(--acc)] px-1.5 py-0.5">
-                            OPEN SOURCE
+                          <span className="border border-[var(--acc)] px-1.5 py-0.5 font-mono text-[8.5px] font-bold tracking-[0.14em] text-[var(--acc)]">
+                            OSS
                           </span>
                         )}
                       </div>
-                      <span className="block font-mono text-[11px] text-[#666666] tracking-[0.05em] mt-1">
+                      <span className="mt-1 block font-mono text-[11px] tracking-[0.05em] text-[#666666]">
                         {project.tagline}
                       </span>
                     </div>
-                    <span className="hidden sm:inline-block font-mono text-[10.5px] text-[#666666] tracking-[0.06em]">
+                    <span className="hidden font-mono text-[10.5px] tracking-[0.06em] text-[#666666] sm:inline-block">
                       {project.tags}
                     </span>
-                    <span className="hidden md:inline-block font-mono text-xs text-[#666666]">
-                      {project.year}
-                    </span>
+                    <span className="hidden font-mono text-xs text-[#666666] md:inline-block">{project.year}</span>
                     <div
-                      className={`w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center border border-[#2c2c2c] text-[#9c9c9c] group-hover:border-[var(--acc)] group-hover:text-[var(--acc)] transition-all duration-300 ${
+                      className={`flex h-7 w-7 items-center justify-center border border-[#2c2c2c] text-[#9c9c9c] transition-all duration-300 group-hover:border-[var(--acc)] group-hover:text-[var(--acc)] sm:h-8 sm:w-8 ${
                         isOpen ? 'rotate-45 border-[var(--acc)] text-[var(--acc)]' : ''
                       }`}
                     >
-                      <Plus className="w-4 h-4" />
+                      <Plus className="h-4 w-4" />
                     </div>
                   </button>
 
-                  <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
-                    }`}
-                  >
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                     <div className="overflow-hidden">
-                      <div className="pt-1 pb-8 sm:pl-[3.2rem] pr-2 space-y-4">
-                        <p className="max-w-[72ch] text-[#9c9c9c] text-sm sm:text-[0.93rem] leading-[1.7]">
+                      <div className="space-y-4 pb-8 pr-2 pt-1 sm:pl-[3.2rem]">
+                        <p className="max-w-[72ch] text-sm leading-[1.7] text-[#9c9c9c] sm:text-[0.93rem]">
                           {project.summary}
                         </p>
 
                         {project.architecture && (
-                          <div className="p-3 border border-[#222222] bg-[#0e0e0e] font-mono text-[11px] text-[#888888] overflow-x-auto max-w-[72ch]">
-                            <span className="text-[var(--acc)] font-bold block mb-1">SYSTEM ARCHITECTURE:</span>
+                          <div className="max-w-[72ch] overflow-x-auto border border-[#222222] bg-[#0e0e0e] p-3 font-mono text-[11px] text-[#888888]">
+                            <span className="mb-1 block font-bold text-[var(--acc)]">SYSTEM:</span>
                             <span className="text-[#ececec]">{project.architecture}</span>
                           </div>
                         )}
 
-                        <div className="flex flex-wrap gap-6 sm:gap-9 my-5">
+                        <div className="my-5 flex flex-wrap gap-6 sm:gap-9">
                           {project.metrics.map((m, idx) => (
                             <div key={idx}>
-                              <b className="block font-mono text-[1.1rem] font-medium text-[var(--acc)]">
-                                {m.value}
-                              </b>
+                              <b className="block font-mono text-[1.1rem] font-medium text-[var(--acc)]">{m.value}</b>
                               <span className="font-mono text-[9.5px] tracking-[0.12em] text-[#666666] uppercase">
                                 {m.label}
                               </span>
@@ -116,7 +109,7 @@ export function SelectedWorkSection({ projects }: SelectedWorkProps) {
                           ))}
                         </div>
 
-                        <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-[#1a1a1a]">
+                        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#1a1a1a] pt-2">
                           <div className="font-mono text-[10px] tracking-[0.1em] text-[#666666] uppercase">
                             {project.role}
                           </div>
@@ -127,11 +120,11 @@ export function SelectedWorkSection({ projects }: SelectedWorkProps) {
                                 href={project.githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold text-white bg-[#141414] hover:bg-[var(--acc)] hover:text-black border border-[#2c2c2c] hover:border-[var(--acc)] px-3 py-1.5 transition-all"
+                                className="inline-flex items-center gap-1.5 border border-[#2c2c2c] bg-[#141414] px-3 py-1.5 font-mono text-[11px] font-bold text-white transition-all hover:border-[var(--acc)] hover:bg-[var(--acc)] hover:text-black"
                               >
-                                <Github className="w-3.5 h-3.5" />
-                                <span>GITHUB REPO</span>
-                                <ArrowUpRight className="w-3 h-3" />
+                                <Github className="h-3.5 w-3.5" />
+                                <span>GITHUB</span>
+                                <ArrowUpRight className="h-3 w-3" />
                               </a>
                             )}
                             {project.liveUrl && (
@@ -139,10 +132,10 @@ export function SelectedWorkSection({ projects }: SelectedWorkProps) {
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold text-white bg-[#141414] hover:bg-white hover:text-black border border-[#2c2c2c] px-3 py-1.5 transition-all"
+                                className="inline-flex items-center gap-1.5 border border-[#2c2c2c] bg-[#141414] px-3 py-1.5 font-mono text-[11px] font-bold text-white transition-all hover:bg-white hover:text-black"
                               >
-                                <ExternalLink className="w-3.5 h-3.5" />
-                                <span>LIVE APP</span>
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                <span>LIVE</span>
                               </a>
                             )}
                           </div>

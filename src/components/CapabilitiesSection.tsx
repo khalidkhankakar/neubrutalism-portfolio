@@ -1,3 +1,4 @@
+/* Hallmark · macrostructure: Edit Grid · tone: technical · anchor hue: amber */
 'use client';
 
 import React from 'react';
@@ -21,51 +22,64 @@ const iconMap = {
 export function CapabilitiesSection({ capabilities }: CapabilitiesProps) {
   return (
     <section id="caps" className="border-t border-[#1d1d1d] bg-[#0a0a0a]">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative ticks">
-        {/* Section Header */}
+      <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
         <ScrollReveal delay={120} duration={700} direction="up">
-          <div className="flex flex-wrap justify-between items-baseline gap-4 py-6 border-b border-[#1d1d1d]">
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-xs font-medium tracking-[0.1em] text-[var(--acc)]">01 /</span>
-              <h2 className="font-sans font-semibold text-[clamp(1.35rem,2.6vw,1.9rem)] tracking-[0.02em] uppercase text-[#ececec]">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#1d1d1d] py-6">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] font-medium tracking-[0.16em] text-[var(--acc)] uppercase">
+                01 /
+              </span>
+              <h2 className="font-sans text-[clamp(1.5rem,2.7vw,2rem)] font-semibold tracking-[-0.04em] text-[#ececec]">
                 Capabilities
               </h2>
             </div>
-            <span className="font-mono text-[10.5px] tracking-[0.16em] text-[#666666] uppercase text-right">
-              WHAT I ACTUALLY DO — ALL DAY, EVERY DAY
-            </span>
+
+            <p className="max-w-xl text-right font-mono text-[10px] tracking-[0.14em] text-[#666666] uppercase">
+              systems, models, and product work
+            </p>
           </div>
         </ScrollReveal>
 
         <div className="py-10 sm:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-[#1d1d1d] border border-[#1d1d1d]">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {capabilities.map((cap, index) => {
               const IconComponent = iconMap[cap.iconName] || Server;
+
               return (
                 <ScrollReveal
                   key={cap.id}
-                  delay={index * 80 + 180}
+                  delay={index * 70 + 140}
                   duration={700}
                   direction="up"
                   className="h-full"
                 >
-                  <div className="group h-full bg-[#0a0a0a] p-6 sm:p-7 flex flex-col justify-between min-h-[228px] hover:bg-[#0e0e0e] transition-colors duration-250">
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-start">
-                        <span className="font-mono text-[11px] text-[#666666]">{cap.idx}</span>
-                        <IconComponent className="w-5 h-5 text-[#9c9c9c] group-hover:text-[var(--acc)] transition-colors duration-250" />
+                  <article className="group h-full border border-[#1d1d1d] bg-[#0d0d0d] p-5 transition-all duration-250 ease-out hover:-translate-y-1 hover:border-[#2b2b2b] hover:bg-[#101010] sm:p-6">
+                    <div className="flex items-center justify-between border-b border-[#1d1d1d] pb-4">
+                      <span className="font-mono text-[10px] tracking-[0.14em] text-[#666666] uppercase">
+                        {cap.idx}
+                      </span>
+
+                      <div className="flex h-9 w-9 items-center justify-center border border-[#262626] bg-[#111111] text-[#cfcfcf] transition-colors duration-250 group-hover:border-[var(--acc)]/40 group-hover:text-[var(--acc)]">
+                        <IconComponent className="h-4 w-4" />
                       </div>
-                      <h3 className="font-mono font-bold text-[12.5px] tracking-[0.1em] text-[#ececec]">
+                    </div>
+
+                    <div className="space-y-4 pt-4">
+                      <h3 className="font-mono text-[11px] font-semibold tracking-[0.14em] text-[#f0f0f0] uppercase">
                         {cap.title}
                       </h3>
-                      <p className="text-[#9c9c9c] text-sm leading-[1.65]">
+
+                      <p className="text-sm leading-6 text-[#9a9a9a]">
                         {cap.description}
                       </p>
                     </div>
-                    <div className="font-mono text-[9.5px] tracking-[0.12em] text-[#666666] border-t border-[#1d1d1d] pt-3 mt-4 group-hover:text-[var(--acc)] transition-colors duration-250">
-                      {cap.footer}
+
+                    <div className="mt-5 border-t border-[#1d1d1d] pt-3">
+                      <span className="font-mono text-[9px] tracking-[0.12em] text-[#666666] uppercase transition-colors duration-250 group-hover:text-[var(--acc)]">
+                        {cap.footer}
+                      </span>
                     </div>
-                  </div>
+                  </article>
                 </ScrollReveal>
               );
             })}

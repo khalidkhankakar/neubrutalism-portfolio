@@ -10,26 +10,26 @@ interface TechStackProps {
 export function TechStackSection({ categories }: TechStackProps) {
   return (
     <section id="stack" className="border-t border-[#1d1d1d] bg-[#0a0a0a]">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 relative ticks">
-        {/* Section Header */}
-        <div className="flex flex-wrap justify-between items-baseline gap-4 py-6 border-b border-[#1d1d1d]">
-          <div className="flex items-baseline gap-3">
-            <span className="font-mono text-xs font-medium tracking-[0.1em] text-[var(--acc)]">03 /</span>
-            <h2 className="font-sans font-semibold text-[clamp(1.35rem,2.6vw,1.9rem)] tracking-[0.02em] uppercase text-[#ececec]">
+      <div className="relative mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#1d1d1d] py-6">
+          <div className="flex items-center gap-3">
+            <span className="font-mono text-[10px] font-medium tracking-[0.16em] text-[var(--acc)] uppercase">
+              03 /
+            </span>
+            <h2 className="font-sans text-[clamp(1.5rem,2.7vw,2rem)] font-semibold tracking-[-0.04em] text-[#ececec]">
               Stack
             </h2>
           </div>
-          <span className="font-mono text-[10.5px] tracking-[0.16em] text-[#666666] uppercase text-right">
-            DAILY DRIVERS — NOT RESUME DECORATION
-          </span>
+          <p className="max-w-xl text-right font-mono text-[10px] tracking-[0.14em] text-[#666666] uppercase">
+            tools i use every week
+          </p>
         </div>
 
-        {/* Stack Grid */}
         <div className="py-10 sm:py-14">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-[#1d1d1d] border border-[#1d1d1d]">
+          <div className="grid grid-cols-1 gap-[1px] border border-[#1d1d1d] bg-[#1d1d1d] sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((cat) => (
-              <div key={cat.title} className="bg-[#0a0a0a] flex flex-col">
-                <h3 className="flex justify-between items-center font-mono text-[10.5px] font-medium tracking-[0.18em] text-[#ececec] px-5 py-3.5 border-b border-[#1d1d1d] bg-[#0e0e0e]/50">
+              <div key={cat.title} className="flex flex-col bg-[#0a0a0a]">
+                <h3 className="flex items-center justify-between border-b border-[#1d1d1d] bg-[#0e0e0e]/50 px-5 py-3.5 font-mono text-[10.5px] font-medium tracking-[0.18em] text-[#ececec]">
                   <span>{cat.title}</span>
                   <span className="text-[#666666]">[{cat.count}]</span>
                 </h3>
@@ -37,14 +37,12 @@ export function TechStackSection({ categories }: TechStackProps) {
                   {cat.items.map((item) => (
                     <div
                       key={item.name}
-                      className="group flex justify-between items-baseline gap-3 px-5 py-3 transition-all duration-200 hover:pl-6 hover:bg-[#0e0e0e]"
+                      className="group flex items-baseline justify-between gap-3 px-5 py-3 transition-all duration-200 hover:bg-[#0e0e0e] hover:pl-6"
                     >
-                      <b className="font-sans text-[0.88rem] font-medium text-[#ececec] group-hover:text-[var(--acc)] transition-colors">
+                      <b className="font-sans text-[0.88rem] font-medium text-[#ececec] transition-colors group-hover:text-[var(--acc)]">
                         {item.name}
                       </b>
-                      <span className="font-mono text-[10px] text-[#666666] whitespace-nowrap">
-                        {item.meta}
-                      </span>
+                      <span className="whitespace-nowrap font-mono text-[10px] text-[#666666]">{item.meta}</span>
                     </div>
                   ))}
                 </div>
