@@ -3,9 +3,9 @@ import { ArrowLeft, Clock, Calendar, Tag } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { ObjectId } from 'mongoose'
-import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import { calculateReadingTime } from '@/utils/constant';
 import { formatDate } from '@/utils/date';
+import { BlogMarkdownRenderer } from '@/components/BlogMarkdownRenderer';
 
 interface Props {
     tags:{ _id:ObjectId,name:string}[],
@@ -13,16 +13,19 @@ interface Props {
     date: string
     img: string
     content: string
+    description?: string
+    author?: string
 }
 
 export const BlogDetail = ({ tags,
     title,
     date,
     img,
-    content,}: Props) => {
+    content,
+    description,
+    author = 'Khalid Kakar'}: Props) => {
     return (
         <article className="editorial-container">
-            <ScrollReveal width="100%">
                 <Link href="/blogs" className="editorial-smallcaps mb-8 inline-flex items-center gap-2 text-[var(--color-ink)] transition-colors hover:text-[var(--color-accent)]">
                     <ArrowLeft size={18} /> Back to blog
                 </Link>
@@ -60,14 +63,16 @@ export const BlogDetail = ({ tags,
                             className="size-16 border border-[var(--color-rule)] object-cover grayscale"
                         />
                         <div>
-                            <h3 className="font-display text-2xl italic leading-none text-[var(--color-ink)]">Khalid Kakar</h3>
-                            <p className="mt-1 max-w-2xl text-sm leading-6 text-[var(--color-ink-2)]">Khalid simplifies complex modern web development topics into simple words with expertise in Next.js and React.js.</p>
+                            <h3 className="font-display text-2xl italic leading-none text-[var(--color-ink)]">{author}</h3>
+                            <p className="mt-1 max-w-2xl text-sm leading-6 text-[var(--color-ink-2)]">
+                                {description || 'Khalid simplifies complex modern web development topics into simple words with expertise in Next.js and React.js.'}
+                            </p>
                         </div>
                     </div>
                 </header>
-            </ScrollReveal>
 
-            <ScrollReveal width="100%" delay={0.1}>
+
+
                 <figure className="mb-[var(--space-xl)] border border-[var(--color-rule)] bg-[var(--color-paper-2)] p-3">
                     <Image
                         src={img}
@@ -78,14 +83,20 @@ export const BlogDetail = ({ tags,
                     />
                     <figcaption className="editorial-smallcaps mt-3 text-[var(--color-muted)]">Featured image</figcaption>
                 </figure>
-            </ScrollReveal>
 
-            <ScrollReveal width="100%" delay={0.2}>
-               <div
+
+
+               {/* <div
                 className='editorial-prose prose prose-lg mx-auto mt-4 w-full max-w-[72ch] focus:outline-none prose-headings:font-normal prose-pre:rounded-none'
                 dangerouslySetInnerHTML={{ __html: content }}
-            ></div>
-            </ScrollReveal>
+            ></div> */}
+             <article className="py-8 sm:py-10 border-t border-[#1d1d1d]">
+          {content ? (
+            <BlogMarkdownRenderer content={content} />
+          ) : (
+            <p className="text-[#888888] italic">No content available for this post.</p>
+          )}
+        </article>
         </article>
     )
 }

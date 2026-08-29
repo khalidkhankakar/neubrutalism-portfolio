@@ -14,7 +14,7 @@ interface Props {
 
 export const BlogCard = ({ slug, date, id, snippet, tags, title }: Props) => {
     return (
-        <ScrollReveal key={id} width="100%" delay={id * 0.08} direction="up">
+        <ScrollReveal key={id} delay={id * 0.08} direction="up" className="w-full">
             <article className="group grid gap-5 py-7 md:grid-cols-[7rem_minmax(0,1fr)_3rem] md:items-start">
                 <time className="font-display text-4xl italic leading-none text-[var(--color-accent)] md:text-5xl">
                     {date}
