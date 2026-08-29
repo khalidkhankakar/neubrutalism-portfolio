@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono, Space_Grotesk, Instrument_Serif } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { AppProvider } from '@/context/AppContext';
 import { Toast } from '@/components/Toast';
@@ -107,6 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AppProvider>
           {children}
           <Toast />
+          <Analytics />
         </AppProvider>
       </body>
     </html>

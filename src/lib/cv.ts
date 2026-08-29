@@ -46,6 +46,12 @@ export function generateCVText(): string {
   ].join('\n');
 }
 
+export function openCVFile(): void {
+  if (typeof window === 'undefined') return;
+  const url = '/resume/khalidkhan-ai-ml-eng.pdf';
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
 export function downloadCVFile(): void {
   if (typeof window === 'undefined') return;
   const cv = generateCVText();

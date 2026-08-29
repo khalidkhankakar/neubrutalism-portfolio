@@ -12,7 +12,7 @@ export function HeaderNav() {
   const paletteRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const { activeSection, downloadCV,  setTheme, theme, scrollToSection } = useApp();
+  const { activeSection, openCV, setTheme, theme, scrollToSection } = useApp();
 
   const isGoodiesPage = pathname === '/goodies';
   const isBlogsPage = pathname?.startsWith('/blogs');
@@ -196,10 +196,10 @@ export function HeaderNav() {
             <button
               id="cvBtn"
               type="button"
-              onClick={downloadCV}
+              onClick={openCV}
               className="font-mono text-[10px] font-bold tracking-[0.12em] bg-[var(--acc)] text-black border border-[var(--acc)] px-3 py-1.5 hover:bg-[#ececec] hover:border-[#ececec] transition-colors cursor-pointer"
             >
-              CV.TXT
+              OPEN CV
             </button>
 
             {/* Mobile Hamburger Button */}

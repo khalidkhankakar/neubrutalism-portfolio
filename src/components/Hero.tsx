@@ -13,7 +13,7 @@ interface HeroProps {
 }
 
 export function Hero({ bio }: HeroProps) {
-  const { downloadCV, scrollToSection } = useApp();
+  const { openCV, scrollToSection } = useApp();
 
   return (
     <section id="top" className="relative pt-10 sm:pt-14 md:pt-18 pb-16 overflow-hidden">
@@ -74,10 +74,10 @@ export function Hero({ bio }: HeroProps) {
             </button>
             <button
               id="cvBtn2"
-              onClick={downloadCV}
+              onClick={openCV}
               className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-[0.12em] px-5 py-3.5 bg-transparent text-[#ececec] border border-[#2c2c2c] hover:border-[var(--acc)] hover:text-[var(--acc)] transition-colors cursor-pointer"
             >
-              DOWNLOAD CV <FileDown className="w-4 h-4" />
+              OPEN CV <FileDown className="w-4 h-4" />
             </button>
             <button
               onClick={() => scrollToSection('contact')}

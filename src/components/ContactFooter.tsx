@@ -11,7 +11,7 @@ interface ContactFooterProps {
 }
 
 export function ContactFooter({ bio = portfolioData.bio }: ContactFooterProps) {
-  const { copyToClipboard, downloadCV } = useApp();
+  const { copyToClipboard, openCV } = useApp();
   const [localTime, setLocalTime] = useState<string>('ISLAMABAD — --:--:-- PKT');
 
   useEffect(() => {
@@ -112,10 +112,10 @@ export function ContactFooter({ bio = portfolioData.bio }: ContactFooterProps) {
             </a>
             <button
               id="cvBtn3"
-              onClick={downloadCV}
+              onClick={openCV}
               className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-[0.12em] px-5 py-3.5 bg-transparent text-[#ececec] border border-[#2c2c2c] hover:border-[var(--acc)] hover:text-[var(--acc)] transition-colors cursor-pointer"
             >
-              DOWNLOAD CV <FileDown className="w-4 h-4" />
+              OPEN CV <FileDown className="w-4 h-4" />
             </button>
           </div>
         </div>

@@ -124,6 +124,7 @@ export const portfolioData: PortfolioData = {
         { value: '4', label: 'ML MODELS IN PROD' },
         { value: '<45ms', label: 'FASTAPI INFERENCE SLA' },
       ],
+      githubUrl: 'https://github.com/khalidkhankakar/Pulse-AI-FYP-',
       role: 'ROLE — ML MODEL TRAINING · FASTAPI INFERENCE APIS · NEXT.JS & DRIZZLE FULL STACK · LLM ASSISTANT',
     },
     {
@@ -158,39 +159,9 @@ export const portfolioData: PortfolioData = {
         { value: 'Multi', label: 'SIMULTANEOUS USERS' },
         { value: '100%', label: 'TYPE-SAFE DB (DRIZZLE)' },
       ],
+      githubUrl: 'https://github.com/khalidkhankakar/vision-board',
+      liveUrl: 'https://vision-board-8xz4.vercel.app/',
       role: 'ROLE — FULL STACK ARCHITECTURE · REAL-TIME LIVEBLOCKS SYNC · CANVAS DRAWING ENGINE · DRIZZLE & NEON',
-    },
-    {
-      id: 'devoverflow',
-      idx: '04',
-      name: 'DevOverflow',
-      tagline: 'modern developer question-and-answer platform',
-      tags: 'Next.js · React · TypeScript · Node.js · MongoDB · Tailwind CSS',
-      year: '2025',
-      summary:
-        'A comprehensive developer community platform for asking questions, sharing technical knowledge, voting, and discovering answers. Includes markdown authoring, syntax-highlighted code snippets, badge reward mechanics, tag filtering, and AI-assisted recommendations.',
-      metrics: [
-        { value: '100%', label: 'FULL STACK TYPESCRIPT' },
-        { value: 'NoSQL', label: 'MONGODB / MONGOOSE' },
-        { value: 'Auth', label: 'SECURE COMMUNITY SESSIONS' },
-      ],
-      role: 'ROLE — FULL STACK DEVELOPMENT · DATABASE MODELING · COMMUNITY FEATURES · MARKDOWN SYSTEM',
-    },
-    {
-      id: 'devpost',
-      idx: '05',
-      name: 'DevPost',
-      tagline: 'project showcase & hackathon collaboration platform',
-      tags: 'React.js · Next.js · TypeScript · PostgreSQL · REST APIs · Tailwind',
-      year: '2025',
-      summary:
-        'A web application and project showcase platform for developers to publish hackathon projects, showcase tech stacks, discover peer work, and receive community feedback. Built with reusable modular components and high-efficiency REST API endpoints.',
-      metrics: [
-        { value: 'REST', label: 'OPTIMIZED APIS' },
-        { value: 'UI/UX', label: 'MODULAR TAILWIND COMPONENTS' },
-        { value: 'Postgres', label: 'RELATIONAL DATA LAYER' },
-      ],
-      role: 'ROLE — FRONTEND ARCHITECTURE · REST API INTEGRATION · COMPONENT OPTIMIZATION',
     },
   ],
   stackCategories: [

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback, useTransition } from 'react';
-import { downloadCVFile } from '@/lib/cv';
+import { downloadCVFile, openCVFile } from '@/lib/cv';
 
 export type ThemeColor = 'amber' | 'green' | 'cyan' | 'violet' | 'crimson' | 'orange' | 'mono';
 
@@ -23,6 +23,7 @@ interface AppContextType {
   toggleTheme: (forced?: ThemeColor) => void;
   activeSection: string;
   setActiveSection: (id: string) => void;
+  openCV: () => void;
   downloadCV: () => void;
   copyToClipboard: (text: string, message?: string) => Promise<boolean>;
   scrollToSection: (id: string) => void;
@@ -76,6 +77,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     },
     [setTheme, showToast]
   );
+
+  const openCV = useCallback(() => {
+    openCVFile();
+    showToast('Opening resume in a new tab');
+  }, [showToast]);
 
   const downloadCV = useCallback(() => {
     downloadCVFile();
@@ -173,6 +179,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         toggleTheme,
         activeSection,
         setActiveSection,
+        openCV,
         downloadCV,
         copyToClipboard,
         scrollToSection,
