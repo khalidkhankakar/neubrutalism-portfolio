@@ -59,13 +59,37 @@ export function HeaderNav() {
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, 'top')}
-            className="group flex items-center gap-2.5 font-mono text-[13px] font-bold tracking-[0.06em] text-[#ececec] transition-colors hover:text-white"
+            className="group relative flex items-center outline-none"
             id="brandLink"
+            title="Khalid Khan - Home"
+            aria-label="Khalid Khan - Home"
           >
-            <span className="h-[11px] w-[11px] rotate-45 border-2 border-[var(--acc)] transition-transform duration-500 ease-out group-hover:rotate-[225deg]" />
-            <span>
-              KHALID<b className="font-bold text-[var(--acc)]">KAKAR</b>.PRO
-            </span>
+            <div className="relative flex h-10 w-10 items-end justify-center">
+              {/* Inner Frame */}
+              <div className="absolute inset-0 border border-[#222222] bg-[#0e0e0e] transition-all duration-300 group-hover:border-[var(--acc)]/60 group-hover:bg-[#141414] group-hover:shadow-[0_0_14px_rgba(255,178,36,0.18)]" />
+
+              {/* 4 Sharp Corner Brackets (sharp neubrutalism corners) */}
+              <span className="pointer-events-none absolute -left-1 -top-1 h-2 w-2 border-l-2 border-t-2 border-[#555555] transition-all duration-300 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 group-hover:border-[var(--acc)]" />
+              <span className="pointer-events-none absolute -right-1 -top-1 h-2 w-2 border-r-2 border-t-2 border-[#555555] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:border-[var(--acc)]" />
+              <span className="pointer-events-none absolute -bottom-1 -left-1 h-2 w-2 border-b-2 border-l-2 border-[#555555] transition-all duration-300 group-hover:-translate-x-0.5 group-hover:translate-y-0.5 group-hover:border-[var(--acc)]" />
+              <span className="pointer-events-none absolute -bottom-1 -right-1 h-2 w-2 border-b-2 border-r-2 border-[#555555] transition-all duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:border-[var(--acc)]" />
+
+              {/* Cutout Portrait Image with Pop-out Overflow Effect */}
+              <div className="relative z-10 flex h-full w-full items-end justify-center overflow-visible">
+                <img
+                  src="/pics/hero.png"
+                  alt="Khalid Khan"
+                  className="h-[38px] w-auto max-w-none select-none object-contain object-bottom drop-shadow-md transition-all duration-300 ease-out group-hover:scale-130 group-hover:-translate-y-1"
+                />
+              </div>
+
+              {/* Bottom Overflow Tag on Hover */}
+              <div className="pointer-events-none absolute -bottom-7 left-1/2 z-50 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                <div className="border border-[#2c2c2c] bg-[#0c0c0c] px-2 py-0.5 font-mono text-[9px] font-bold tracking-[0.14em] text-[var(--acc)] uppercase shadow-2xl whitespace-nowrap">
+                  KHALID KHAN
+                </div>
+              </div>
+            </div>
           </Link>
 
           <nav className="ml-auto hidden items-center gap-6 md:flex" aria-label="Main Navigation">

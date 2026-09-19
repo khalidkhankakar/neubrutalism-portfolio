@@ -15,6 +15,9 @@ import { QuotesSection } from '@/components/QuotesSection';
 import { WritingSection } from '@/components/WritingSection';
 import { GoodiesTeaser } from '@/components/GoodiesTeaser';
 import { ContactFooter } from '@/components/ContactFooter';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import { Terminal } from '@/components/Terminal';
+import { TrainingMonitor } from '@/components/TrainingMonitor';
 
 export const revalidate = 60; // ISR / Cache revalidation
 
@@ -69,6 +72,15 @@ export default async function HomePage() {
       <HeaderNav />
       <main id="mainContent">
         <Hero bio={data.bio} />
+        <div className='relative my-6 z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8'>
+
+        <ScrollReveal delay={300} duration={800} direction="up">
+          <div className=" grid grid-cols-1 gap-[1px] border border-[#1d1d1d] bg-[#1d1d1d] lg:grid-cols-[1.5fr_1fr]">
+            <Terminal />
+            <TrainingMonitor />
+          </div>
+        </ScrollReveal>
+        </div>
         <TechTicker keywords={data.tickerKeywords} />
         <StatsStrip stats={data.stats} />
         <CapabilitiesSection capabilities={data.capabilities} />
